@@ -1,0 +1,77 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: 400861.PcbDoc   10.02.2026  09:31:38
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Side to Bottom Side
+ASCII RoundHoles File : 400861-RoundHoles.TXT
+ASCII SlotHoles File : 400861-SlotHoles.TXT
+EIA File   : 400861.DRL
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T2      8mil (0.201mm)                                            Round             2409      PTH        187.00inch (4749.83mm)
+T3      24mil (0.599mm)                                           Slot              8         PTH        3.53inch (89.60mm)
+T4      24mil (0.599mm)                                           Round             4         NPTH       0.83inch (21.02mm)
+T5      35mil (0.899mm)                                           Round             2         NPTH       0.27inch (6.80mm)
+T6      39mil (0.991mm)                                           Round             3         NPTH       0.38inch (9.72mm)
+T7      126mil (3.2mm)                                            Round             6         NPTH       12.05inch (306.14mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              2432
+Layer Pair : Top Side to Mid-Layer 1
+ASCII RoundHoles File : 400861-RoundHoles.TX1
+EIA File   : 400861.DR1
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      4mil (0.099mm)                                            Round             376       PTH        40.01inch (1016.31mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              376
+Layer Pair : Mid-Layer 1 to Mid-Layer 2
+ASCII RoundHoles File : 400861-RoundHoles.TX2
+EIA File   : 400861.DR2
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      4mil (0.099mm)                                            Round             250       PTH        31.09inch (789.79mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              250
+Layer Pair : Mid-Layer 2 to Mid-Layer 3
+ASCII RoundHoles File : 400861-RoundHoles.TX3
+EIA File   : 400861.DR3
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      4mil (0.099mm)                                            Round             199       PTH        29.27inch (743.57mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              199
+Layer Pair : Mid-Layer 3 to Mid-Layer 4
+ASCII RoundHoles File : 400861-RoundHoles.TX4
+EIA File   : 400861.DR4
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T2      8mil (0.201mm)                                            Round             199       PTH        27.35inch (694.73mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              199
+Layer Pair : Mid-Layer 4 to Mid-Layer 5
+ASCII RoundHoles File : 400861-RoundHoles.TX5
+EIA File   : 400861.DR5
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      4mil (0.099mm)                                            Round             82        PTH        17.11inch (434.68mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              82
+Layer Pair : Mid-Layer 5 to Mid-Layer 6
+ASCII RoundHoles File : 400861-RoundHoles.TX6
+EIA File   : 400861.DR6
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      4mil (0.099mm)                                            Round             12        PTH        4.83inch (122.59mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              12
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              3550
+
+Total Processing Time (hh:mm:ss) : 00:00:00
