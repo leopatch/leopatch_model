@@ -1,0 +1,287 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "a0a6d49d-19dd-5283-9053-0258eeefa838")
+	(paper "A3")
+	(title_block
+		(title "LeoPatch Rev 1")
+		(date "2026-10-25")
+		(rev "1")
+		(company "LeoPatch")
+		(comment 1 "Based on Nordic nRF54LM20 DK PCA10184 v0.7.0")
+	)
+	(lib_symbols)
+	(sheet
+		(at 30.48 50.8)
+		(size 101.6 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "52d3e054-90a1-5a84-8b20-3f9f140984d3")
+		(property "Sheetname" "Radio core"
+			(at 30.48 50.0884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "radio.kicad_sch"
+			(at 30.48 76.7846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "leopatch_rev1"
+				(path "/a0a6d49d-19dd-5283-9053-0258eeefa838"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 157.48 50.8)
+		(size 101.6 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "6ab5d617-2b95-5751-867c-07e7af823df0")
+		(property "Sheetname" "Power and charging"
+			(at 157.48 50.0884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 157.48 76.7846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "leopatch_rev1"
+				(path "/a0a6d49d-19dd-5283-9053-0258eeefa838"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 284.48 50.8)
+		(size 101.6 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "4e90c1d0-529b-5c36-9355-fab5f7ef4e67")
+		(property "Sheetname" "USB-C"
+			(at 284.48 50.0884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "usb.kicad_sch"
+			(at 284.48 76.7846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "leopatch_rev1"
+				(path "/a0a6d49d-19dd-5283-9053-0258eeefa838"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 30.48 101.6)
+		(size 101.6 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "7d185abb-19cc-56bf-9fad-a04e0be8bd77")
+		(property "Sheetname" "Flash, LEDs, buttons, SWD"
+			(at 30.48 100.8884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "io.kicad_sch"
+			(at 30.48 127.5846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "leopatch_rev1"
+				(path "/a0a6d49d-19dd-5283-9053-0258eeefa838"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 157.48 101.6)
+		(size 101.6 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "0c07ec4a-a837-5608-98ac-a7e8b0ce1009")
+		(property "Sheetname" "ECG front end"
+			(at 157.48 100.8884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "ecg.kicad_sch"
+			(at 157.48 127.5846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "leopatch_rev1"
+				(path "/a0a6d49d-19dd-5283-9053-0258eeefa838"
+					(page "6")
+				)
+			)
+		)
+	)
+	(text "LeoPatch Rev 1: the nRF54LM20 DK (PCA10184 v0.7.0) with the debugger and development parts removed, plus an AD8232 ECG front end, a LiPo battery and a 2.7 V supply."
+		(exclude_from_sim no)
+		(at 30.48 165.1 0)
+		(effects
+			(font
+				(size 2 2)
+			)
+			(justify left bottom)
+		)
+		(uuid "a851d247-a2c4-5d67-ab28-474913d9ec7b")
+	)
+	(text "Parts kept from the DK use the DK's designators and the DK's own pin-to-net connections, so 'Update PCB from Schematic' can re-link them to the DK layout by reference."
+		(exclude_from_sim no)
+		(at 30.48 172.72 0)
+		(effects
+			(font
+				(size 2 2)
+			)
+			(justify left bottom)
+		)
+		(uuid "bf15144f-7799-5f2e-bc6f-173b5f543c33")
+	)
+	(text "Net names are global labels: the same name on any sheet is the same net."
+		(exclude_from_sim no)
+		(at 30.48 180.34 0)
+		(effects
+			(font
+				(size 2 2)
+			)
+			(justify left bottom)
+		)
+		(uuid "e8b7fd04-cb08-5cca-b537-12fa58b62b46")
+	)
+	(text "See README.md in this folder for the PCB steps and hardware/LeoPatch_Rev1_PCB_Plan.pdf for the reasoning."
+		(exclude_from_sim no)
+		(at 30.48 187.96 0)
+		(effects
+			(font
+				(size 2 2)
+			)
+			(justify left bottom)
+		)
+		(uuid "767942d4-5731-565a-aee4-3e8e0ee86eed")
+	)
+	(text "LeoPatch Rev 1"
+		(exclude_from_sim no)
+		(at 30.48 33.02 0)
+		(effects
+			(font
+				(size 5 5)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "659b7e09-f91e-557a-b621-971395de39b0")
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

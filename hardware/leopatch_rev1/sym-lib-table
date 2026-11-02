@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "leopatch")(type "KiCad")(uri "${KIPRJMOD}/libraries/leopatch.kicad_sym")(options "")(descr "LeoPatch symbols: nRF54LM20B, nPM1300, AD8232, flash, USB-C and DK parts"))
+)

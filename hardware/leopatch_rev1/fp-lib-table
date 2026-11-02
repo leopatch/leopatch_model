@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "leopatch_dk")(type "KiCad")(uri "${KIPRJMOD}/libraries/leopatch_dk.pretty")(options "")(descr "Footprints copied from the nRF54LM20 DK v0.7.0 board"))
+  (lib (name "leopatch")(type "KiCad")(uri "${KIPRJMOD}/libraries/leopatch.pretty")(options "")(descr "Other LeoPatch footprints (AD8232 LFCSP, JST PH connectors)"))
+)

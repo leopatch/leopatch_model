@@ -1,0 +1,8 @@
+INFO: running ecg_sex_v3
+INFO: starting compiler...
+INFO: model name is : ecg_sex_v3
+INFO: test data or proper test labels are not provided, we have the tflite file.
+INFO: running for variant ecg_sex_v3
+CRITICAL: Exception: integer 313 does not fit 'uint8_t' in MEAN operation @ axon_layer_num 8 ,exiting....
+CRITICAL: Exception: integer 313 does not fit 'uint8_t'
+ERROR: return code -908, exception occured when generating the bin file
