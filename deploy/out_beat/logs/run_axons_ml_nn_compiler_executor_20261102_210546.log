@@ -1,0 +1,37 @@
+INFO: running ecg_sex_beat
+INFO: starting compiler...
+INFO: model name is : ecg_sex_beat
+INFO: test data or proper test labels are not provided, we have the tflite file.
+INFO: running for variant ecg_sex_beat
+INFO: compiler intermediate outputs are saved in : /Users/em/Desktop/leopatch_model/deploy/out_beat/intermediate/
+INFO: getting test vectors for mass inference...
+INFO: .... done!, took 0.05890202522277832 seconds! for 8 vectors
+INFO: model compiled successfully ....
+INFO: proceeding to run inference on test vectors ....
+INFO: 
+-----------------------------------------------------
+ Model ECG_SEX_BEAT results (variant : ecg_sex_beat)
+-----------------------------------------------------
+
+	Memory Usage (in bytes)
+
+		model_const_buffer_size:	1491012
+		interlayer_buffer_size:	52736
+		psum_buffer_size:	0
+		cmd_buffer_size:	289336
+
+	Inference time (estimate, in ticks):	53120053
+
+	Accuracy/Results NA, Labels are not provided!
+	
+ 	Bit Comparison Histogram  (8 data points) 
+
+		Diff	||graph|| (count, percent of full data points)
+		   0	||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| (7, 87.50%)
+		   1	||||||||||||||| (1, 12.50%)
+INFO: done running variant ecg_sex_beat, return code 0
+INFO: 
+	Performance_Metrics
+		Model_Variant	Inference_Time	Accuracy	Precision	Quantization_Loss	Flash_Size	Ram_Size	Total_Memory	
+		ecg_sex_beat	53120053	None	None	None	1780348	52736	1833084
+INFO: completed running ecg_sex_beat, return code 0(NRF_AXON_COMPILER_RESULT_SUCCESS), took 48.02 seconds

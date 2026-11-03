@@ -1,0 +1,33 @@
+best_performance: {}
+highest_accuracy: {}
+lowest_memory:
+  ecg_sex_beat:
+    accuracy_results:
+      axons: null
+      float: null
+      tflite: null
+    memory_footprint:
+      cmd_buffer_size: 289336
+      interlayer_buffer_size: 52736
+      model_const_buffer_size: 1491012
+      psum_buffer_size: 0
+    performance_metrics:
+      accuracy: null
+      flash_size: 1780348
+      inference_time: 53120053
+      precision: null
+      quantization_loss: null
+      ram_size: 52736
+      total_memory: 1833084
+    profiling_ticks: 53120053
+    quantization_loss:
+      axons: null
+      tflite: null
+    test_data_size: 8
+    variant_settings:
+      2d_conv_setting: local_psum
+      normalized_scaleshifts: true
+      psum_location: null
+      quantization: false
+      softmax: null
+      transpose_kernel: false

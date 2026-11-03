@@ -36,7 +36,7 @@ def read_recording(s):
             if line.startswith("# start"):
                 rows = []
             elif line.startswith("# done"):
-                return np.array(rows, dtype=float).reshape(-1, 2)
+                return np.array([r for r in rows if len(r) == 3], dtype=float).reshape(-1, 3)
         elif "," in line and rows is not None:
             try:
                 rows.append([float(v) for v in line.split(",")])
@@ -52,17 +52,24 @@ def main():
             data = read_recording(s)
             if len(data) == 0:
                 continue
-            mv, off = data[:, 0], data[:, 1] > 0
+            raw, mv, code = data[:, 0], data[:, 1], data[:, 2].astype(int)
+            off = code > 0
+            print(f"LO+ off in {np.mean((code & 1) > 0):.0%} of samples, LO- off in {np.mean((code & 2) > 0):.0%}")
+            hum = raw - mv
+            print(f"hum removed: {np.percentile(hum, 99) - np.percentile(hum, 1):.0f} mV peak to peak")
             name = time.strftime("ecg_%Y%m%d_%H%M%S.csv")
-            np.savetxt(name, data, delimiter=",", header="mv,lead_off", comments="", fmt="%g")
+            np.savetxt(name, data, delimiter=",", header="raw_mv,filtered_mv,lead_off", comments="",
+                       fmt="%g")
 
             t = np.arange(len(mv)) / FS
-            fig, ax = plt.subplots(figsize=(12, 4))
-            ax.plot(t, mv, lw=0.8)
+            fig, (ax_raw, ax) = plt.subplots(2, 1, figsize=(12, 6), sharex=True)
+            ax_raw.plot(t, raw, lw=0.6, color="0.5")
+            ax_raw.set(ylabel="raw (mV)", title=f"{name}: raw from the AD8232")
+            ax.plot(t, mv, lw=0.9)
             ax.fill_between(t, mv.min(), mv.max(), where=off, color="red", alpha=0.15,
                             label="lead off")
-            ax.set(xlabel="time (s)", ylabel="AD8232 output (mV)",
-                   title=f"{name}: {len(mv)} samples, swing {mv.max() - mv.min():.0f} mV")
+            ax.set(xlabel="time (s)", ylabel="filtered (mV)",
+                   title=f"60/120/180 Hz hum removed on the board, swing {mv.max() - mv.min():.0f} mV")
             if off.any():
                 ax.legend(loc="upper right")
             fig.tight_layout()

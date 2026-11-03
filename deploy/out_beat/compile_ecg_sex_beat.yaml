@@ -1,0 +1,23 @@
+ecg_sex_beat:
+  model_name: ecg_sex_beat
+  tflite_model: /Users/em/Desktop/leopatch_model/deploy/out_beat/ecg_sex_beat_npu_int8.tflite
+  float_model: null
+  train_data: null
+  test_data: /Users/em/Desktop/leopatch_model/deploy/out_beat/ecg_sex_beat_test_q.npy
+  test_labels: null
+  test_labels_format: null
+  classification_labels: null
+  test_vectors: all
+  header_file_test_vector_cnt: 2
+  disable_op_quantization: null
+  transpose_kernel: null
+  run_all_variants: null
+  interlayer_buffer_size: 200000
+  psum_buffer_size: null
+  op_radix: null
+  user_handle_accuracy_results: null
+  user_handle_test_labels: null
+  log_level: info
+  precision_threshold: null
+  precision_margin: null
+  reshape_input: null

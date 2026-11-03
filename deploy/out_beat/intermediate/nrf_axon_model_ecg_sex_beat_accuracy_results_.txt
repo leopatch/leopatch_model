@@ -1,0 +1,21 @@
+
+-----------------------------------------------------
+ Model ECG_SEX_BEAT results (variant : ecg_sex_beat)
+-----------------------------------------------------
+
+	Memory Usage (in bytes)
+
+		model_const_buffer_size:	1491012
+		interlayer_buffer_size:	52736
+		psum_buffer_size:	0
+		cmd_buffer_size:	289336
+
+	Inference time (estimate, in ticks):	53120053
+
+	Accuracy/Results NA, Labels are not provided!
+	
+ 	Bit Comparison Histogram  (8 data points) 
+
+		Diff	||graph|| (count, percent of full data points)
+		   0	||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| (7, 87.50%)
+		   1	||||||||||||||| (1, 12.50%)
