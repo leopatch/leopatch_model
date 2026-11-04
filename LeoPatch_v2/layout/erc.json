@@ -1,0 +1,94 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-03T19:11:00-0600",
+    "kicad_version": "9.0.7",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90",
+            "violations": [
+                {
+                    "description": "The current configuration does not include the symbol library 'LeoPatch'",
+                    "items": [
+                        {
+                            "description": "Symbol U1 [BM20BC]",
+                            "pos": {
+                                "x": 1.905,
+                                "y": 1.6002
+                            },
+                            "uuid": "5ecfb9e1-f765-5ce1-aa99-17627e864ce0"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'LeoPatch'",
+                    "items": [
+                        {
+                            "description": "Symbol U201 [AD8232]",
+                            "pos": {
+                                "x": 2.159,
+                                "y": 1.4732
+                            },
+                            "uuid": "abd79ac1-4c10-5ae2-8a5d-ed7b6a2bed96"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                }
+            ]
+        },
+        {
+            "path": "/BM20BC module/",
+            "uuid_path": "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/ab00b617-dce4-5dd5-bd30-81c8a7690bc0",
+            "violations": [
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin H7 [VBUS, Bidirectional, Line]",
+                            "pos": {
+                                "x": 1.651,
+                                "y": 1.3716
+                            },
+                            "uuid": "5cd2e3a5-0d00-4817-b510-abd4a79559f7"
+                        },
+                        {
+                            "description": "Symbol #FLG510 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 0.635,
+                                "y": 1.6002
+                            },
+                            "uuid": "2afa9537-e368-4b8c-8aeb-056513b85a51"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                }
+            ]
+        },
+        {
+            "path": "/Power/",
+            "uuid_path": "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/1bd637cf-7783-5fe2-bdf0-ffd80b334887",
+            "violations": []
+        },
+        {
+            "path": "/ECG front end/",
+            "uuid_path": "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/f0d23f52-e0d2-5d2d-be47-e1184c1697c7",
+            "violations": []
+        },
+        {
+            "path": "/LEDs + button/",
+            "uuid_path": "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/707f3a77-758b-5a35-aad2-4bc90a18387e",
+            "violations": []
+        },
+        {
+            "path": "/USB-C/",
+            "uuid_path": "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/7cc85e11-f58d-5d51-883e-cdd1ec6b8e98",
+            "violations": []
+        }
+    ],
+    "source": "LeoPatch_v2.kicad_sch"
+}
