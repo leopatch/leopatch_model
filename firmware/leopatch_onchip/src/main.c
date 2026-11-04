@@ -1,12 +1,18 @@
 /*
  * LeoPatch on-chip test: AD8232 breakout -> nRF54LM20B -> median-beat model on the Axon NPU.
  *
- * Press Button 0 to record 5 s at 500 Hz. The chip removes mains hum, finds the heartbeats,
- * builds the 800-sample median beat, runs the stem on the CPU and the rest of the model on the
- * NPU, and shows the answer on the LEDs:
+ * Press Button 0 to record RECORD_SECONDS at 500 Hz. The chip removes mains hum and finds the
+ * heartbeats. With RUN_MODEL set it also builds the 800-sample median beat, runs the stem on the
+ * CPU and the rest of the V3 model on the NPU, and shows the answer on the LEDs:
  *   LED0 = man, LED1 = woman, LED2 = running (recording or thinking), LED3 = error
+ * With RUN_MODEL off, the recording is only sent (Button 1) and the model runs on the laptop
+ * (tools/ble_receive.py); all LEDs are off when the recording is done.
  * Errors: an electrode off, fewer than 2 full heartbeats, ADC or NPU failure. At start-up the
  * NPU is checked against the Python reference on 4 built-in PTB-XL beats; a mismatch is an error.
+ *
+ * Press Button 1 to send the last result and recording over Bluetooth (see upload.h); LED2
+ * blinks while the board waits for a receiver and sends. The radio is off at all other times,
+ * so it never runs during an inference.
  *
  * Serial output (debugger's second port) is compatible with
  * firmware/ecg_breakout_test/tools/plot_ecg.py: one "raw_mv,filtered_mv,lead_off" line per
@@ -29,10 +35,15 @@
 #include "frontend.h"
 #include "notch.h"
 #include "recording.h"
+#include "upload.h"
 #include "generated/nrf_axon_model_ecg_sex_beat_.h"
 #include "generated/test_beats.h"
 
 #define MODEL model_ecg_sex_beat
+
+/* 0: record and send only; the lead I model runs on the laptop. 1: run the V3 model on the chip
+ * (expects 5 s recordings, set RECORD_SECONDS in recording.h). */
+#define RUN_MODEL 0
 
 /* Mains hum in the US: 60 Hz plus harmonics below the 250 Hz Nyquist limit. */
 #define MAINS_HZ       60
@@ -46,19 +57,30 @@
 /* Allowed logit difference to the Python int8 reference (front end float rounding). */
 #define LOGIT_TOLERANCE 0.25f
 
+/* How long Button 1 advertises for a phone or laptop before giving up. */
+#define UPLOAD_WAIT K_SECONDS(60)
+
+enum event { EVENT_MEASURE, EVENT_UPLOAD };
+
 static const struct adc_dt_spec ecg = ADC_DT_SPEC_GET_BY_IDX(DT_PATH(zephyr_user), 0);
 static const struct gpio_dt_spec lo_plus = GPIO_DT_SPEC_GET(DT_PATH(zephyr_user), lo_plus_gpios);
 static const struct gpio_dt_spec lo_minus = GPIO_DT_SPEC_GET(DT_PATH(zephyr_user), lo_minus_gpios);
 /* Active low: "active" means shut down. */
 static const struct gpio_dt_spec sdn = GPIO_DT_SPEC_GET(DT_PATH(zephyr_user), sdn_gpios);
 static const struct gpio_dt_spec button = GPIO_DT_SPEC_GET(DT_ALIAS(sw0), gpios);
+static const struct gpio_dt_spec button_upload = GPIO_DT_SPEC_GET(DT_ALIAS(sw1), gpios);
 static const struct gpio_dt_spec led_man = GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
 static const struct gpio_dt_spec led_woman = GPIO_DT_SPEC_GET(DT_ALIAS(led1), gpios);
 static const struct gpio_dt_spec led_running = GPIO_DT_SPEC_GET(DT_ALIAS(led2), gpios);
 static const struct gpio_dt_spec led_error = GPIO_DT_SPEC_GET(DT_ALIAS(led3), gpios);
 
-static K_SEM_DEFINE(start, 0, 1);
+K_MSGQ_DEFINE(events, sizeof(enum event), 1, 4);
 static struct gpio_callback button_cb;
+static struct gpio_callback button_upload_cb;
+
+/* Last successful result, sent by Button 1 together with recording[]. */
+static char last_result[96];
+static bool have_result;
 
 static float recording[RECORDING_LEN];
 static float beat[BEAT_LEN];
@@ -67,8 +89,17 @@ static int8_t npu_output[NRF_AXON_MODEL_ECG_SEX_BEAT_PACKED_OUTPUT_SIZE] __align
 
 static void button_pressed(const struct device *dev, struct gpio_callback *cb, uint32_t pins)
 {
-	k_sem_give(&start);
+	enum event e = cb == &button_upload_cb ? EVENT_UPLOAD : EVENT_MEASURE;
+
+	k_msgq_put(&events, &e, K_NO_WAIT); /* dropped if a job is already waiting */
 }
+
+static void blink(struct k_timer *t)
+{
+	gpio_pin_toggle_dt(&led_running);
+}
+
+static K_TIMER_DEFINE(blinker, blink, NULL);
 
 static void show(const struct gpio_dt_spec *on)
 {
@@ -112,12 +143,20 @@ static int setup(void)
 	}
 	err = err ?: gpio_pin_configure_dt(&button, GPIO_INPUT);
 	err = err ?: gpio_pin_interrupt_configure_dt(&button, GPIO_INT_EDGE_TO_ACTIVE);
+	err = err ?: gpio_pin_configure_dt(&button_upload, GPIO_INPUT);
+	err = err ?: gpio_pin_interrupt_configure_dt(&button_upload, GPIO_INT_EDGE_TO_ACTIVE);
 	if (err) {
 		printk("# error: GPIO/ADC setup failed (%d)\n", err);
 		return err;
 	}
 	gpio_init_callback(&button_cb, button_pressed, BIT(button.pin));
+	gpio_init_callback(&button_upload_cb, button_pressed, BIT(button_upload.pin));
 	err = gpio_add_callback_dt(&button, &button_cb);
+	err = err ?: gpio_add_callback_dt(&button_upload, &button_upload_cb);
+	if (err || upload_init()) {
+		printk("# error: button or Bluetooth setup failed\n");
+		return err ?: -EIO;
+	}
 
 	if (dims->height * dims->width * dims->channel_cnt != sizeof(npu_input) ||
 	    dims->byte_width != 1 || MODEL.outputs[0].dimensions.byte_width != 1) {
@@ -206,6 +245,11 @@ static int record(int *clipped)
 	return off;
 }
 
+static int beats_per_minute(const int *peaks, int n_peaks)
+{
+	return n_peaks > 1 ? 60 * SAMPLE_RATE_HZ * (n_peaks - 1) / (peaks[n_peaks - 1] - peaks[0]) : 0;
+}
+
 static void measure(void)
 {
 	int peaks[PEAKS_MAX];
@@ -213,6 +257,7 @@ static void measure(void)
 	float logit;
 
 	show(&led_running);
+	have_result = false; /* recording[] is about to be overwritten */
 	const int off = record(&clipped);
 
 	if (off < 0) {
@@ -229,6 +274,18 @@ static void measure(void)
 
 	const uint32_t t0 = k_cycle_get_32();
 	const int n_peaks = beats_find_r_peaks(recording, RECORDING_LEN, peaks, PEAKS_MAX);
+
+	if (!RUN_MODEL) {
+		const int bpm = beats_per_minute(peaks, n_peaks);
+
+		printk("# result: recorded %d s, %d beats, %d bpm, %d clipped samples\n# done\n",
+		       RECORD_SECONDS, n_peaks, bpm, clipped);
+		show(NULL);
+		snprintk(last_result, sizeof(last_result), "RECORDED,seconds=%d,beats=%d,bpm=%d,clipped=%d",
+			 RECORD_SECONDS, n_peaks, bpm, clipped);
+		have_result = true;
+		return;
+	}
 	const int n_beats = beats_median(recording, RECORDING_LEN, peaks, n_peaks, beat);
 
 	if (n_beats < 2) {
@@ -254,6 +311,29 @@ static void measure(void)
 	       man ? "MAN" : "WOMAN", (double)p_male, (double)MODEL_THRESHOLD, n_beats, bpm, clipped,
 	       ms);
 	show(man ? &led_man : &led_woman);
+	snprintk(last_result, sizeof(last_result), "%s,p_male=%.2f,threshold=%.2f,beats=%d,bpm=%d",
+		 man ? "MAN" : "WOMAN", (double)p_male, (double)MODEL_THRESHOLD, n_beats, bpm);
+	have_result = true;
+}
+
+static void upload(void)
+{
+	if (!have_result) {
+		printk("# bluetooth: nothing to send yet, press Button 0 to record first\n");
+		return;
+	}
+	k_timer_start(&blinker, K_MSEC(250), K_MSEC(250));
+	const int err = upload_send(last_result, recording, RECORDING_LEN, UPLOAD_WAIT);
+
+	k_timer_stop(&blinker);
+	gpio_pin_set_dt(&led_running, 0);
+	if (err == -ETIMEDOUT) {
+		printk("# bluetooth: no receiver connected within 60 s, stopped\n");
+	} else if (err) {
+		printk("# bluetooth: upload failed (%d)\n", err);
+	} else {
+		printk("# bluetooth: sent result and %d samples\n", RECORDING_LEN);
+	}
 }
 
 int main(void)
@@ -269,11 +349,18 @@ int main(void)
 		printk("# error: NPU self-test failed\n");
 		return 0;
 	}
-	printk("# ready: press Button 0 to record %d s\n", RECORD_SECONDS);
+	printk("# ready: press Button 0 to record %d s, Button 1 to send it over Bluetooth\n",
+	       RECORD_SECONDS);
 	while (true) {
-		k_sem_take(&start, K_FOREVER);
-		measure();
-		k_sem_reset(&start); /* ignore presses during the recording */
+		enum event e;
+
+		k_msgq_get(&events, &e, K_FOREVER);
+		if (e == EVENT_MEASURE) {
+			measure();
+		} else {
+			upload();
+		}
+		k_msgq_purge(&events); /* ignore presses during the job */
 		printk("# ready\n");
 	}
 }

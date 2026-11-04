@@ -4,5 +4,5 @@
 #pragma once
 
 #define SAMPLE_RATE_HZ 500
-#define RECORD_SECONDS 5
+#define RECORD_SECONDS 10
 #define RECORDING_LEN  (SAMPLE_RATE_HZ * RECORD_SECONDS)

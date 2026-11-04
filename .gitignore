@@ -1,0 +1,9 @@
+# Python and macOS clutter
+__pycache__/
+.DS_Store
+
+# ECG recordings are personal health data: keep them off GitHub
+/ecg_*.csv
+/ecg_*.png
+/ble_*.csv
+/ble_*.png

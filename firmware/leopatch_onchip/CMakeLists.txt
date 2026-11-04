@@ -17,4 +17,5 @@ target_sources(app PRIVATE
     src/beats.c
     src/frontend.c
     src/notch.c
+    src/upload.c
 )
