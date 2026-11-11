@@ -5,7 +5,7 @@
       "Application": "Pcbnew",
       "Version": "9.0.7"
     },
-    "CreationDate": "2026-11-03T19:16:52-06:00"
+    "CreationDate": "2026-11-11T16:33:38-06:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
@@ -19,7 +19,7 @@
     },
     "LayerNumber": 4,
     "BoardThickness": 1.6,
-    "Finish": "None"
+    "Finish": "ENIG"
   },
   "DesignRules": [
     {
@@ -27,7 +27,7 @@
       "PadToPad": 0.15,
       "PadToTrack": 0.15,
       "TrackToTrack": 0.15,
-      "MinLineWidth": 0.2,
+      "MinLineWidth": 0.15,
       "TrackToRegion": 0.2,
       "RegionToRegion": 0.2
     },
@@ -47,12 +47,12 @@
       "FilePolarity": "Positive"
     },
     {
-      "Path": "LeoPatch_v2-In1_Cu (GND).g1",
+      "Path": "LeoPatch_v2-In1_Cu.g1",
       "FileFunction": "Copper,L2,Inr",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "LeoPatch_v2-In2_Cu (3V3).g2",
+      "Path": "LeoPatch_v2-In2_Cu.g2",
       "FileFunction": "Copper,L3,Inr",
       "FilePolarity": "Positive"
     },
@@ -118,32 +118,35 @@
     },
     {
       "Type": "Dielectric",
-      "Thickness": 0.48,
-      "Material": "FR4",
+      "Color": "R109G116B75",
+      "Thickness": 0.2104,
+      "Material": "7628",
       "Name": "F.Cu/In1.Cu (GND)",
       "Notes": "Type: dielectric layer 1 (from F.Cu to In1.Cu (GND))"
     },
     {
       "Type": "Copper",
-      "Thickness": 0.035,
+      "Thickness": 0.0152,
       "Name": "In1.Cu (GND)"
     },
     {
       "Type": "Dielectric",
-      "Thickness": 0.48,
+      "Color": "R109G116B75",
+      "Thickness": 1.065,
       "Material": "FR4",
       "Name": "In1.Cu (GND)/In2.Cu (3V3)",
       "Notes": "Type: dielectric layer 2 (from In1.Cu (GND) to In2.Cu (3V3))"
     },
     {
       "Type": "Copper",
-      "Thickness": 0.035,
+      "Thickness": 0.0152,
       "Name": "In2.Cu (3V3)"
     },
     {
       "Type": "Dielectric",
-      "Thickness": 0.48,
-      "Material": "FR4",
+      "Color": "R109G116B75",
+      "Thickness": 0.2104,
+      "Material": "7628",
       "Name": "In2.Cu (3V3)/B.Cu",
       "Notes": "Type: dielectric layer 3 (from In2.Cu (3V3) to B.Cu)"
     },

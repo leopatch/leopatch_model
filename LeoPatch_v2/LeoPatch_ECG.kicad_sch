@@ -3444,7 +3444,7 @@
 		)
 		(uuid "c5abdee5-d4e2-400b-9f58-6b7672fc08aa")
 	)
-	(text "High-pass (0.5 Hz) / low-pass (40 Hz) filter network, reference, control"
+	(text "High-pass (0.5 Hz) / low-pass (~145 Hz) filter network, total gain ~200, reference, control"
 		(exclude_from_sim no)
 		(at 26.27 203.81 0)
 		(effects
@@ -4259,7 +4259,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1.5nF"
+		(property "Value" "1nF"
 			(at 203.2 222.25 0)
 			(effects
 				(font
@@ -4383,7 +4383,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10nF"
+		(property "Value" "1.2nF"
 			(at 226.06 222.25 0)
 			(effects
 				(font
@@ -4495,7 +4495,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "1M"
 			(at 248.92 222.25 0)
 			(effects
 				(font

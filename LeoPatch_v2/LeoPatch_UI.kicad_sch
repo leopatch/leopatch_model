@@ -1544,5 +1544,160 @@
 		)
 		(uuid "a9e2ae47-873c-47ca-b9ec-a984d1759ba7")
 	)
+	(symbol
+		(lib_id "Switch:SW_Push")
+		(at 205.74 76.2 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f62b71eb-5843-52c5-a608-de8cc745133c")
+		(property "Reference" "SW302"
+			(at 205.74 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "START"
+			(at 205.74 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
+			(at 205.74 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 205.74 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch, generic, two pins"
+			(at 205.74 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9354c0cb-909e-4b36-9fef-a3dfb3ceec6c")
+		)
+		(pin "2"
+			(uuid "49f78258-5ae7-4ce0-a654-0c6bbf01087a")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/707f3a77-758b-5a35-aad2-4bc90a18387e"
+					(reference "SW302")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "BTN_START"
+		(shape bidirectional)
+		(at 200.66 76.2 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b20dc948-435f-454c-8bd4-e39aaba3e8e1")
+	)
+	(wire
+		(pts
+			(xy 210.82 76.2) (xy 214.63 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f3562c0-44ac-4444-b377-273a2f802fce")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 214.63 76.2 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c8193dfe-3b71-43ae-ae00-3077efe55166")
+		(property "Reference" "#PWR305"
+			(at 214.63 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 214.63 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 214.63 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 214.63 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 214.63 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "02732d1f-6052-4342-988f-69893ded1187")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/707f3a77-758b-5a35-aad2-4bc90a18387e"
+					(reference "#PWR305")
+					(unit 1)
+				)
+			)
+		)
+	)
 	(embedded_fonts no)
 )

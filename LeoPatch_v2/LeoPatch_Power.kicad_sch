@@ -1234,6 +1234,119 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Connector_Generic:Conn_01x01"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "J"
+			(at 0 2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_01x01"
+			(at 0 -2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "connector"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Connector*:*_1x??_*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "Conn_01x01_1_1"
+			(rectangle
+				(start -1.27 1.27)
+				(end 1.27 -1.27)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(rectangle
+				(start -1.27 0.127)
+				(end 0 -0.127)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 3.81)
+				(name "Pin_1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	)
 	(text "POWER: 4xAA pack -> on/off switch -> reverse-polarity diode -> 3.3 V LDO"
 		(exclude_from_sim no)
@@ -3857,6 +3970,401 @@
 			(justify left bottom)
 		)
 		(uuid "f428aee0-8891-4379-be1d-1d2419553b64")
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x01")
+		(at 259.08 121.92 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "614119bf-26d4-5ace-a7fc-25082f27fc5e")
+		(property "Reference" "J103"
+			(at 261.62 120.65 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+			)
+		)
+		(property "Value" "VIN"
+			(at 261.62 123.19 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
+			(at 259.08 121.92 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 259.08 121.92 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x01"
+			(at 259.08 121.92 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "38e98681-4888-4b4a-b97d-9d087caab3ec")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/1bd637cf-7783-5fe2-bdf0-ffd80b334887"
+					(reference "J103")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 254 121.92) (xy 246.38 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "01413343-0fcf-4b61-b44e-e56c2bc0e7cb")
+	)
+	(label "VBAT"
+		(at 246.38 121.92 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "25869077-de0e-4da9-b1da-3d5ed30ecf13")
+	)
+	(text "J103 VIN: external supply in, in parallel with the batteries and USB (joins after their diodes,\nso it cannot back-feed either). 3.6 - 6 V. Clip the supply's minus to J105."
+		(exclude_from_sim no)
+		(at 228.6 114.3 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1e2791f7-2eed-4da6-ad32-1e7ce33c1afa")
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x01")
+		(at 259.08 137.16 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a1d93818-3621-5747-8b24-f4e89327fdbb")
+		(property "Reference" "J104"
+			(at 261.62 135.89 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+			)
+		)
+		(property "Value" "3V3"
+			(at 261.62 138.43 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
+			(at 259.08 137.16 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 259.08 137.16 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x01"
+			(at 259.08 137.16 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b5c0899f-d8e1-4d8e-92bd-012af222460f")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/1bd637cf-7783-5fe2-bdf0-ffd80b334887"
+					(reference "J104")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 254 137.16) (xy 246.38 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d64cdbee-2cdd-49af-af18-637dd417f9e3")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 246.38 137.16 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "31f7c232-7c0c-4140-9640-df45303c9d07")
+		(property "Reference" "#PWR120"
+			(at 246.38 129.54 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 246.38 133.604 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			)
+		)
+		(property "Footprint" ""
+			(at 246.38 137.16 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 246.38 137.16 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 246.38 137.16 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4c785130-0920-42ac-a798-ca82ca844fcf")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/1bd637cf-7783-5fe2-bdf0-ffd80b334887"
+					(reference "#PWR120")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(text "J104 3V3: 3.3 V rail out (or in from a bench supply: pull the JP101 jumper first)."
+		(exclude_from_sim no)
+		(at 228.6 129.54 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f0056657-455a-4470-b709-c97e6d5a0749")
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x01")
+		(at 259.08 152.4 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1de2ed04-ddfe-5185-89ec-f613783bbc4f")
+		(property "Reference" "J105"
+			(at 261.62 151.13 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+			)
+		)
+		(property "Value" "GND"
+			(at 261.62 153.67 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
+			(at 259.08 152.4 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 259.08 152.4 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x01"
+			(at 259.08 152.4 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6787f54b-b3a6-4a54-b67b-caced1a5a407")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/1bd637cf-7783-5fe2-bdf0-ffd80b334887"
+					(reference "J105")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 254 152.4) (xy 246.38 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1e25154a-5daa-48d7-9434-7bd732fdfc72")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 246.38 152.4 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "99c694d5-e527-47eb-bb7a-f05f1ace0869")
+		(property "Reference" "#PWR121"
+			(at 246.38 158.75 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 246.38 156.21 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			)
+		)
+		(property "Footprint" ""
+			(at 246.38 152.4 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 246.38 152.4 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 246.38 152.4 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "533cfe28-d910-4e94-aebe-9cda4616f20c")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/1bd637cf-7783-5fe2-bdf0-ffd80b334887"
+					(reference "#PWR121")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(embedded_fonts no)
 )

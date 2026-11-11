@@ -2554,6 +2554,491 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Memory_Flash:W25Q32JVSS"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -6.35 11.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "W25Q32JVSS"
+			(at 7.62 11.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_5.3x5.3mm_P1.27mm"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.winbond.com/resource-files/w25q32jv%20revg%2003272018%20plus.pdf"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "32Mbit / 4MiB Serial Flash Memory, Standard/Dual/Quad SPI, 2.7-3.6V, SOIC-8 (208 mil)"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "flash memory SPI"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "*SOIC*5.3x5.3mm*P1.27mm*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "W25Q32JVSS_0_1"
+			(rectangle
+				(start -7.62 10.16)
+				(end 10.16 -10.16)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+		)
+		(symbol "W25Q32JVSS_1_1"
+			(pin input line
+				(at -10.16 7.62 0)
+				(length 2.54)
+				(name "~{CS}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -10.16 5.08 0)
+				(length 2.54)
+				(name "CLK"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -10.16 2.54 0)
+				(length 2.54)
+				(name "DI/IO_{0}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -10.16 0 0)
+				(length 2.54)
+				(name "DO/IO_{1}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -10.16 -2.54 0)
+				(length 2.54)
+				(name "~{WP}/IO_{2}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -10.16 -5.08 0)
+				(length 2.54)
+				(name "~{HOLD}/~{RESET}/IO_{3}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 12.7 270)
+				(length 2.54)
+				(name "VCC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -12.7 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "Connector:TestPoint"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.762)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "TP"
+			(at 0 6.858 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 0 5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 5.08 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 5.08 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "test point tp"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Pin* Test*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "TestPoint_0_1"
+			(circle
+				(center 0 3.302)
+				(radius 0.762)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "TestPoint_1_1"
+			(pin passive line
+				(at 0 0 90)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "Switch:SW_Push"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SW"
+				(at 1.27 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "SW_Push"
+				(at 0 -1.524 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Push button switch, generic, two pins"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "switch normally-open pushbutton push-button"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SW_Push_0_1"
+				(circle
+					(center -2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.27)
+						(xy 0 3.048)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 1.27)
+						(xy -2.54 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(text "MCU: Fanstel BM20BC module - nRF54LM20B (Arm M33 + Axon NPU), 32 MHz + 32 kHz crystals, DC/DC, chip antenna"
 		(exclude_from_sim no)
@@ -3174,7 +3659,7 @@
 		)
 		(uuid "96d11904-91a6-4804-aff6-87d1069a98da")
 	)
-	(global_label "LED_RED"
+	(global_label "BTN_START"
 		(shape bidirectional)
 		(at 162.56 124.46 180)
 		(fields_autoplaced yes)
@@ -4533,26 +5018,6 @@
 		(uuid "b7010bd1-986c-43e1-8e86-73f4a9a1f412")
 	)
 	(no_connect
-		(at 215.9 121.92)
-		(uuid "5916e050-632e-4c20-923b-803618150dc9")
-	)
-	(no_connect
-		(at 215.9 124.46)
-		(uuid "6217be6f-630a-4dd4-8d02-1b00f43e0475")
-	)
-	(no_connect
-		(at 215.9 127)
-		(uuid "cd47e08e-2eb2-47c8-904d-25c7c9f3bab5")
-	)
-	(no_connect
-		(at 215.9 129.54)
-		(uuid "497420e3-8839-4b3d-9761-6ce84ea24e4f")
-	)
-	(no_connect
-		(at 215.9 132.08)
-		(uuid "099b4a80-c5f3-4079-b40e-7649c4efc488")
-	)
-	(no_connect
 		(at 215.9 134.62)
 		(uuid "456bc940-0964-4e2d-b169-5ebf0d6d9ba6")
 	)
@@ -4599,10 +5064,6 @@
 	(no_connect
 		(at 215.9 162.56)
 		(uuid "1bbf2878-603d-4ea4-95c0-2cc1213ff5a7")
-	)
-	(no_connect
-		(at 215.9 165.1)
-		(uuid "bdab08d0-9061-4115-8072-290a1da395a4")
 	)
 	(no_connect
 		(at 215.9 167.64)
@@ -4715,10 +5176,6 @@
 	(no_connect
 		(at 215.9 236.22)
 		(uuid "aa201a88-0fb4-40e0-bca7-1d534851b161")
-	)
-	(no_connect
-		(at 215.9 238.76)
-		(uuid "5ab91f17-62d0-4fca-a5a0-0cf3a67db719")
 	)
 	(no_connect
 		(at 215.9 241.3)
@@ -5928,6 +6385,1261 @@
 			(justify left bottom)
 		)
 		(uuid "dbe02449-94f8-43af-a4a5-29e4e9023b08")
+	)
+	(label "FLASH_SCK"
+		(at 215.9 121.92 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "70603fca-484a-4339-9779-27866a7a6f86")
+	)
+	(label "FLASH_IO3"
+		(at 215.9 124.46 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9e9bf9f8-b037-4047-bf49-7c30d5e8d93b")
+	)
+	(label "FLASH_IO2"
+		(at 215.9 127 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7170cbc2-1b73-4d20-95d2-b56e0b5302c2")
+	)
+	(label "FLASH_IO1"
+		(at 215.9 129.54 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2e41a465-ca45-472b-94d9-742751128bf3")
+	)
+	(label "FLASH_CS"
+		(at 215.9 132.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8bd634d9-e411-4a86-8ad6-7e65f79f1a00")
+	)
+	(label "FLASH_IO0"
+		(at 215.9 165.1 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "bfbae700-2026-4b59-940f-2f8d47319755")
+	)
+	(symbol
+		(lib_id "Memory_Flash:W25Q32JVSS")
+		(at 279.4 81.28 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "39a78684-c295-4783-8fe1-bf39eed0eff4")
+		(property "Reference" "U2"
+			(at 281.94 68.58 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+			)
+		)
+		(property "Value" "GD25WQ64ESIGR"
+			(at 281.94 93.98 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 279.4 81.28 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 279.4 81.28 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "GigaDevice GD25WQ64E 64 Mbit 1.65-3.6 V SPI/QSPI NOR flash, SOP-8 150 mil"
+			(at 279.4 81.28 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3558636f-907a-46b2-ad22-4c0d882eb85b")
+		)
+		(pin "2"
+			(uuid "9288169e-a457-4676-bd26-64060e266ae5")
+		)
+		(pin "3"
+			(uuid "62d4d055-7d01-49c8-87fb-fb6e8b704178")
+		)
+		(pin "4"
+			(uuid "cb4101f8-1f78-4ea6-a2e3-9e44a0de2255")
+		)
+		(pin "5"
+			(uuid "1bd7c73c-6dee-4cb8-9663-d90442a4d8f7")
+		)
+		(pin "6"
+			(uuid "f0519b04-8b75-4fd4-be96-c6d8ad0469bd")
+		)
+		(pin "7"
+			(uuid "359c7a11-9fba-4a11-98f3-a4c1948b058a")
+		)
+		(pin "8"
+			(uuid "53af40a3-8886-40cb-936d-1301e05f9bd1")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/ab00b617-dce4-5dd5-bd30-81c8a7690bc0"
+					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(label "FLASH_CS"
+		(at 269.24 73.66 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "6cf1aee0-c052-4ccd-82e8-3dd74a1b2aaf")
+	)
+	(label "FLASH_SCK"
+		(at 269.24 76.2 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "3e81a886-ab54-463a-8e2f-9bad26400e83")
+	)
+	(label "FLASH_IO0"
+		(at 269.24 78.74 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "19de0ac4-f100-4595-9d8a-57a96f7bcec2")
+	)
+	(label "FLASH_IO1"
+		(at 269.24 81.28 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "79135078-3f0c-485d-87d6-8a245b14d518")
+	)
+	(label "FLASH_IO2"
+		(at 269.24 83.82 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "87511e53-2b8d-43bf-ac69-009ae48c3708")
+	)
+	(label "FLASH_IO3"
+		(at 269.24 86.36 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2564f25c-c25b-417b-a494-f9fc473a4876")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 279.4 68.58 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5d9a9e3a-0cde-4323-ae4c-805ec50662ed")
+		(property "Reference" "#PWR510"
+			(at 279.4 60.96 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 279.4 65.024 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			)
+		)
+		(property "Footprint" ""
+			(at 279.4 68.58 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 279.4 68.58 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 279.4 68.58 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ec4c76d1-be32-4d92-906f-1be3c87cec61")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/ab00b617-dce4-5dd5-bd30-81c8a7690bc0"
+					(reference "#PWR510")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 279.4 93.98 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5f8b8ad6-5a65-433a-91dc-c257d0e7cbf0")
+		(property "Reference" "#PWR511"
+			(at 279.4 100.33 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 279.4 97.79 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			)
+		)
+		(property "Footprint" ""
+			(at 279.4 93.98 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 279.4 93.98 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 279.4 93.98 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8f0a19a3-ab20-44d7-b50a-76d9a5467da6")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/ab00b617-dce4-5dd5-bd30-81c8a7690bc0"
+					(reference "#PWR511")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 299.72 81.28 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "105f54b2-d368-4b41-a0d9-e3422d5a0905")
+		(property "Reference" "C4"
+			(at 302.26 80.01 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 302.26 82.55 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 299.72 81.28 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 299.72 81.28 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 299.72 81.28 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "396811e2-5369-4579-b6f2-3a21effc0e50")
+		)
+		(pin "2"
+			(uuid "4c5ca75b-98e8-4c99-a06f-0e2c09140bd2")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/ab00b617-dce4-5dd5-bd30-81c8a7690bc0"
+					(reference "C4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 299.72 77.47 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f3a0a752-35dd-4142-9904-57f42739bbcf")
+		(property "Reference" "#PWR512"
+			(at 299.72 69.85 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 299.72 73.914 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			)
+		)
+		(property "Footprint" ""
+			(at 299.72 77.47 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 77.47 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 299.72 77.47 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e865b6af-f513-4f4e-94e5-1dace85b983a")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/ab00b617-dce4-5dd5-bd30-81c8a7690bc0"
+					(reference "#PWR512")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 299.72 85.09 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f969c909-23da-48d4-9350-0b305e66366d")
+		(property "Reference" "#PWR513"
+			(at 299.72 91.44 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 299.72 88.9 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			)
+		)
+		(property "Footprint" ""
+			(at 299.72 85.09 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 85.09 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 299.72 85.09 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "39bfaa7c-0468-4d16-9267-992e0b811b7b")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/ab00b617-dce4-5dd5-bd30-81c8a7690bc0"
+					(reference "#PWR513")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(text "External flash: GD25WQ64E (8 MB) on P2.00-P2.05, same pins as the nRF54LM20 DK flash.\nPlace C4 next to U2 pin 8."
+		(exclude_from_sim no)
+		(at 254 58.42 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7b2e1dea-3682-4df3-a889-dfa0b2ae5ac8")
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 320.04 81.28 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "77885d54-5340-5f06-b29a-147c0ee8cfda")
+		(property "Reference" "R2"
+			(at 322.58 80.01 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+			)
+		)
+		(property "Value" "100k"
+			(at 322.58 82.55 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 320.04 81.28 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 320.04 81.28 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 320.04 81.28 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "81153d73-d05d-4aab-8991-d2e51dbdc1c5")
+		)
+		(pin "2"
+			(uuid "54f40a52-b6b8-45eb-9c61-553ff3ddb773")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/ab00b617-dce4-5dd5-bd30-81c8a7690bc0"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 320.04 77.47 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5a720fb3-a850-4af2-9976-c85d95a53cb1")
+		(property "Reference" "#PWR514"
+			(at 320.04 69.85 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 320.04 73.914 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			)
+		)
+		(property "Footprint" ""
+			(at 320.04 77.47 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 320.04 77.47 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 320.04 77.47 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9a607193-e3a0-4467-b8fa-6c7c9172efe5")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/ab00b617-dce4-5dd5-bd30-81c8a7690bc0"
+					(reference "#PWR514")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(label "FLASH_CS"
+		(at 320.04 85.09 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "35535a31-2f4e-474b-aa71-88b2a5be54b7")
+	)
+	(text "R2 keeps the flash deselected while the MCU pins float (reset, programming)."
+		(exclude_from_sim no)
+		(at 312.42 68.58 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f33f747d-c2eb-41fc-a86a-f664869c555d")
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 320.04 121.92 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "10fc8617-6fdb-539d-90e7-6601cc136f48")
+		(property "Reference" "TP1"
+			(at 320.04 115.062 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			)
+		)
+		(property "Value" "GND"
+			(at 320.04 116.84 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 320.04 121.92 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 320.04 121.92 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 320.04 121.92 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "61f79d5f-a2ea-4a75-bec0-b9f93cf4227e")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/ab00b617-dce4-5dd5-bd30-81c8a7690bc0"
+					(reference "TP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 320.04 121.92) (xy 320.04 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf40d811-dae2-4210-9f7f-669f971fe048")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 320.04 124.46 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ef0b2fc6-6bfc-4e58-81b2-b079a8bbd66a")
+		(property "Reference" "#PWR515"
+			(at 320.04 130.81 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 320.04 128.27 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			)
+		)
+		(property "Footprint" ""
+			(at 320.04 124.46 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 320.04 124.46 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 320.04 124.46 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "66bb3615-ee4d-4842-8b13-30cb4f3c5519")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/ab00b617-dce4-5dd5-bd30-81c8a7690bc0"
+					(reference "#PWR515")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 335.28 121.92 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "196aa595-e3b8-5fe3-9ce8-225a5a07efb2")
+		(property "Reference" "TP2"
+			(at 335.28 115.062 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			)
+		)
+		(property "Value" "3V3"
+			(at 335.28 116.84 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 335.28 121.92 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 335.28 121.92 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 335.28 121.92 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ed86c106-85fa-469a-bcf4-f0ea76db3b82")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/ab00b617-dce4-5dd5-bd30-81c8a7690bc0"
+					(reference "TP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 335.28 121.92) (xy 342.9 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "742f772b-8dc1-42bb-bdbe-1780b9e09d39")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 342.9 121.92 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4b8c26d0-54d3-4562-b2ea-45459ed59a54")
+		(property "Reference" "#PWR516"
+			(at 342.9 114.3 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 342.9 118.364 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			)
+		)
+		(property "Footprint" ""
+			(at 342.9 121.92 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 342.9 121.92 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 342.9 121.92 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b8b527aa-6ec4-4e9a-88c2-0575003fc1f7")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/ab00b617-dce4-5dd5-bd30-81c8a7690bc0"
+					(reference "#PWR516")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 355.6 121.92 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "870e926d-608e-5269-aad0-d4424fe89caa")
+		(property "Reference" "TP3"
+			(at 355.6 115.062 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			)
+		)
+		(property "Value" "ECG_OUT"
+			(at 355.6 116.84 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 355.6 121.92 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 355.6 121.92 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 355.6 121.92 0)
+			(effects
+				(font
+				(size 1.27 1.27)
+			)
+			(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f692a4ca-acd0-4ec4-9efa-ace6156aa779")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/ab00b617-dce4-5dd5-bd30-81c8a7690bc0"
+					(reference "TP3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "ECG_OUT"
+		(shape bidirectional)
+		(at 355.6 121.92 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3a11fc25-8163-4c1f-abfb-095ce32a1802")
+	)
+	(text "Test points (1 mm pads on the top side)"
+		(exclude_from_sim no)
+		(at 312.42 109.22 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "40df2270-d4f9-4dae-9b6a-1fb05aa7b056")
+	)
+	(global_label "LED_RED"
+		(shape bidirectional)
+		(at 215.9 238.76 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f7018a3b-7110-42aa-b47e-693f9cce0dd9")
+	)
+	(symbol
+		(lib_id "Switch:SW_Push")
+		(at 330.2 160.02 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d1172c84-7840-50e1-b13a-de615df277b0")
+		(property "Reference" "SW303"
+			(at 330.2 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "RESET"
+			(at 330.2 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_B3U-1000P"
+			(at 330.2 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 330.2 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch, generic, two pins"
+			(at 330.2 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "86772488-1c08-4e66-927b-127721957dfb")
+		)
+		(pin "2"
+			(uuid "d81ed4df-0c21-4979-9104-a48b954c58d7")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/ab00b617-dce4-5dd5-bd30-81c8a7690bc0"
+					(reference "SW303")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(label "nRESET"
+		(at 325.12 160.02 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e09d6d3a-b136-423f-9963-0ea43a10e4d9")
+	)
+	(wire
+		(pts
+			(xy 335.28 160.02) (xy 340.36 160.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "abc796db-b195-4e09-8836-99d879facd07")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 340.36 160.02 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fa438faf-6994-4824-9d49-96f311505645")
+		(property "Reference" "#PWR520"
+			(at 340.36 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 340.36 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 340.36 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 340.36 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 340.36 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4f071ff1-0688-4cfb-8f07-264c1b2b3275")
+		)
+		(instances
+			(project "LeoPatch_v2"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90/ab00b617-dce4-5dd5-bd30-81c8a7690bc0"
+					(reference "#PWR520")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(text "SW303 pulls nRESET low. R1 (10k) and C3 (100nF) are the pull-up and debounce."
+		(exclude_from_sim no)
+		(at 312.42 149.86 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "43fe939c-e4c2-42ff-84f8-db6431442808")
 	)
 	(embedded_fonts no)
 )
