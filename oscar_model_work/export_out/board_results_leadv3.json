@@ -1,0 +1,74 @@
+{
+  "n_windows": 1,
+  "n_ok": 1,
+  "n_errors_logged": 0,
+  "threshold": 0.5634123682975769,
+  "board_info": {
+    "model_bytes": "1499768",
+    "model_crc32": "e8275d14",
+    "arena_size": "385056",
+    "arena_used": "334148",
+    "in_bytes": "5000",
+    "in_zp": "-6",
+    "out_zp": "-9",
+    "status": "ok"
+  },
+  "metrics_board": {
+    "auc": NaN,
+    "acc": 0.0,
+    "sens": NaN,
+    "spec": 0.0
+  },
+  "metrics_pc_int8": {
+    "auc": NaN,
+    "acc": 0.0,
+    "sens": NaN,
+    "spec": 0.0
+  },
+  "metrics_pc_fp32": {
+    "auc": NaN,
+    "acc": 0.0,
+    "sens": NaN,
+    "spec": 0.0
+  },
+  "ci95_board": null,
+  "agree_decision_vs_pc_int8": 1.0,
+  "agree_decision_vs_fp32": 1.0,
+  "exact_q_match": 0.0,
+  "mean_abs_dq": 2.0,
+  "max_abs_dq": 2,
+  "latency_ms": {
+    "mean": 633879.0,
+    "median": 633879.0,
+    "p95": 633879.0,
+    "max": 633879.0
+  },
+  "simulated": false,
+  "board_q": [
+    28
+  ],
+  "pc_q": [
+    26
+  ],
+  "label": [
+    0
+  ],
+  "ms": [
+    633879.0
+  ],
+  "memory": {
+    "model_bytes_in_flash": 1499768,
+    "tflm_arena_used": 334148,
+    "tflm_arena_reserved": 385056,
+    "build_log": {
+      "FLASH": {
+        "used": 1591268,
+        "size": 2084864
+      },
+      "RAM": {
+        "used": 423376,
+        "size": 523264
+      }
+    }
+  }
+}
