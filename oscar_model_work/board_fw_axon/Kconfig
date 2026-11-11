@@ -1,0 +1,17 @@
+source "Kconfig.zephyr"
+
+menu "LEO PATCH sex model on Axon"
+
+choice ECG_MODEL
+	prompt "Which minimized model to run"
+	default ECG_MODEL_W50_B10
+
+config ECG_MODEL_W50_B10
+	bool "w50_b10  (18.1 M MACs, AUC 0.826 -- the recommended one)"
+
+config ECG_MODEL_W25
+	bool "w25  (9.7 M MACs, smaller / faster backup)"
+
+endchoice
+
+endmenu

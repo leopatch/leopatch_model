@@ -310,10 +310,11 @@ def send_window(link, q, infer_timeout):
         raise RuntimeError("no RES line (inference timeout)")
     if not ln.startswith("RES"):
         raise RuntimeError(ln)
-    m = re.match(r"RES q=(-?\d+) ms=(\d+)", ln)
+    m = re.match(r"RES q=(-?\d+) ms=(\d+)(?: us=(\d+))?", ln)
     if not m:
         raise RuntimeError("bad RES line: " + ln)
-    return int(m.group(1)), int(m.group(2))
+    # the Axon firmware also reports microseconds (an Axon inference is only tens of ms)
+    return int(m.group(1)), (int(m.group(3)) / 1000.0 if m.group(3) else int(m.group(2)))
 
 
 # ======================================================================================
@@ -344,7 +345,20 @@ def pick_subset(y, n, seed=0):
     return sel
 
 
+AXON_DEFAULT_TFLITE = HERE / "export_out" / "axon" / "ecg_small_w50_b10_int8.tflite"
+AXON_DEFAULT_BOARDSET = HERE / "export_out" / "small" / "boardset_small_w50_b10.npz"
+
+
 def cmd_run(a):
+    axon = a.engine == "axon"
+    if axon:
+        # Axon firmware (board_fw_axon): the model on the board is the Axon-compiled version of the SAME int8
+        # model, so the PC reference is the (tall-layout) .tflite and the CRC of the .tflite is not comparable.
+        a.tflite = a.tflite or str(AXON_DEFAULT_TFLITE)
+        a.boardset = a.boardset or str(AXON_DEFAULT_BOARDSET)
+    else:
+        a.tflite = a.tflite or str(DEFAULT_TFLITE)
+        a.boardset = a.boardset or str(DEFAULT_BOARDSET)
     bs = np.load(a.boardset)
     X, y, fp32 = bs["x"], bs["y"].astype(int), bs["fp32_logit"].astype(np.float64)
     patient, thr = bs["patient"], float(bs["threshold"])
@@ -368,7 +382,11 @@ def cmd_run(a):
     problems = []
     if info.get("status", "").split("(")[0] != "ok":
         problems.append(f"model setup failed on the board: status={info.get('status')} -- see README troubleshooting")
-    if info.get("model_crc32") and int(info["model_crc32"], 16) != blob_crc:
+    if axon and info.get("engine") != "axon" and not a.simulate:
+        problems.append("--engine axon, but the board firmware did not say engine=axon -- is board_fw_axon flashed?")
+    if not axon and info.get("engine") == "axon":
+        problems.append("the board runs the Axon firmware; pass --engine axon")
+    if not axon and info.get("model_crc32") and int(info["model_crc32"], 16) != blob_crc:
         problems.append(f"model on the board (crc {info['model_crc32']}) is NOT the .tflite you pass here "
                         f"(crc {blob_crc:08x}) -- run `prepare` again and reflash")
     if info.get("in_zp") and int(info["in_zp"]) != int(i_zp):
@@ -395,7 +413,7 @@ def cmd_run(a):
                 time.sleep(0.3 if str(e).startswith(("ERR crc", "ERR len")) else 2.6)
                 link.p.reset_input_buffer()
         if k == 0 and ok[0]:
-            print(f" first inference took {ms[0]:.0f} ms on the board "
+            print(f" first inference took {ms[0]:.1f} ms on the board "
                   f"-> all {n} windows ~ {n * (ms[0] / 1000 + 0.6) / 60:.1f} min")
         elif (k + 1) % 5 == 0 or k + 1 == n:
             print(f" {k + 1}/{n} windows  ({time.time() - t_start:.0f}s)", flush=True)
@@ -436,7 +454,7 @@ def cmd_run(a):
 
     arena_used = int(info.get("arena_used", 0))
     mem = {"model_bytes_in_flash": int(info.get("model_bytes", 0)), "tflm_arena_used": arena_used,
-           "tflm_arena_reserved": int(info.get("arena_size", 0))}
+           "tflm_arena_reserved": int(info.get("arena_size", 0)), "engine": a.engine}
     if a.build_log:
         mem["build_log"] = parse_build_log(a.build_log)
     res["memory"] = mem
@@ -459,11 +477,13 @@ def cmd_run(a):
     print(f"                   same male/female decision as PC int8: {pct(agree_pc)};  as fp32: {pct(agree_f32)}")
     if res["max_abs_dq"] > 3:
         print("   WARNING: differences above a few int8 steps are not rounding noise -- suspect an op/version/layout mismatch.")
-    print(f"\n latency per ECG on the board: mean {lat.mean():.0f} ms, median {np.median(lat):.0f}, "
-          f"p95 {np.percentile(lat, 95):.0f}, max {lat.max():.0f}")
+    ndig = 1 if axon else 0
+    print(f"\n latency per ECG on the board ({a.engine}): mean {lat.mean():.{ndig}f} ms, median {np.median(lat):.{ndig}f}, "
+          f"p95 {np.percentile(lat, 95):.{ndig}f}, max {lat.max():.{ndig}f}")
     print("\n MEMORY")
     print(f"  model weights (flash)       : {mem['model_bytes_in_flash']:,} B = {mem['model_bytes_in_flash'] / 1024:.0f} KiB")
-    print(f"  TFLM arena actually needed  : {arena_used:,} B = {arena_used / 1024:.0f} KiB (reserved {mem['tflm_arena_reserved'] / 1024:.0f} KiB)")
+    what = "Axon interlayer RAM needed" if axon else "TFLM arena actually needed "
+    print(f"  {what} : {arena_used:,} B = {arena_used / 1024:.0f} KiB (reserved {mem['tflm_arena_reserved'] / 1024:.0f} KiB)")
     if a.build_log:
         for region, v in mem["build_log"].items():
             print(f"  whole firmware, {region:6s}      : {v['used']:,} B of {v['size']:,} B  ({v['used'] / v['size'] * 100:.1f}%)")
@@ -471,7 +491,7 @@ def cmd_run(a):
         print("  (pass --build-log build.log to also show total flash/RAM of the firmware image)")
     if errors:
         print(f"\n {len(errors)} transfer error(s) were retried, e.g. {errors[0]}")
-    out = Path(a.out) if a.out else HERE / "export_out" / ("board_results_SIM.json" if a.simulate else "board_results_leadv3.json")
+    out = Path(a.out) if a.out else HERE / "export_out" / ("board_results_SIM.json" if a.simulate else ("board_results_axon.json" if axon else "board_results_leadv3.json"))
     out.parent.mkdir(exist_ok=True)
     out.write_text(json.dumps(res, indent=2))
     print(f"\n saved: {out}")
@@ -490,8 +510,10 @@ def main():
     sp.add_argument("--port", help="e.g. /dev/cu.usbmodem0010501234561 or COM7")
     sp.add_argument("--baud", type=int, default=115200)
     sp.add_argument("--rtscts", action="store_true", help="enable hardware flow control (try if the board never answers)")
-    sp.add_argument("--tflite", default=str(DEFAULT_TFLITE))
-    sp.add_argument("--boardset", default=str(DEFAULT_BOARDSET))
+    sp.add_argument("--engine", choices=("tflm", "axon"), default="tflm",
+                    help="tflm = board_fw (Cortex-M33 + TFLite Micro); axon = board_fw_axon (Axon NPU, minimized 100 Hz models)")
+    sp.add_argument("--tflite", default=None, help="PC reference int8 model (default depends on --engine)")
+    sp.add_argument("--boardset", default=None, help="windows .npz (default depends on --engine)")
     sp.add_argument("--n", type=int, default=20, help="number of windows (balanced). Start small: see README on speed")
     sp.add_argument("--infer-timeout", type=float, default=300.0, help="seconds to wait for one inference")
     sp.add_argument("--retries", type=int, default=2)

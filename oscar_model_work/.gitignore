@@ -7,3 +7,5 @@ board_fw/src/model_data.cc
 board_fw/src/model_config.h
 export_out/small/boardset_*.npz
 export_out/small/calib_*.npy
+export_out/axon/xq_*.npy
+board_fw_axon/build/

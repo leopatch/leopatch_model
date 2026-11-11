@@ -1,0 +1,7 @@
+/*
+ * Turn the Axon NPU on (same overlay as Nordic's hello_axon sample).
+ * The Axon NPU exists only on the nRF54LM20B, so build for nrf54lm20dk/nrf54lm20b/cpuapp.
+ */
+&axon {
+	status = "okay";
+};

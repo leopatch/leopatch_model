@@ -1,0 +1,23 @@
+# Same two models, plus 199 real test windows (xq_*.npy: LOCAL ONLY, derived from MIMIC data, not pushed to GitHub) (already quantized to int8 by the TFLite input scale/zero point) so the
+# compiler's x86 simulator runs the compiled Axon model and compares it bit-for-bit with the TFLite int8 model.
+# This is how axon_sim_check.json was made. Slow (a few minutes).
+ecg_sex_w50_b10:
+  model_name: ecg_sex_w50_b10
+  tflite_model: ecg_small_w50_b10_axon_int8.tflite
+  test_data: xq_w50_b10.npy
+  reshape_input: true
+  test_vectors: ["0-199"]
+  classification_labels:
+  interlayer_buffer_size: 125000
+  psum_buffer_size: 0
+  log_level: info
+ecg_sex_w25:
+  model_name: ecg_sex_w25
+  tflite_model: ecg_small_w25_axon_int8.tflite
+  test_data: xq_w25.npy
+  reshape_input: true
+  test_vectors: ["0-199"]
+  classification_labels:
+  interlayer_buffer_size: 125000
+  psum_buffer_size: 0
+  log_level: info

@@ -1,0 +1,8 @@
+# Axon compiler config for the backup model. Run from this folder (see AXON_RESULTS.md, "Re-making the headers").
+ecg_sex_w25:
+  model_name: ecg_sex_w25
+  tflite_model: ecg_small_w25_axon_int8.tflite
+  classification_labels:
+  interlayer_buffer_size: 125000     # upper limit the compiler may use; the model needs 32,640
+  psum_buffer_size: 0
+  log_level: info

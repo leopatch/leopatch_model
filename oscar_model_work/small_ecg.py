@@ -205,36 +205,49 @@ def _fold(conv, bn):
     return (w * s[:, None, None]).astype(np.float32), (beta - mu * s).astype(np.float32)
 
 
-def build_keras(model, length=L_IN):
+def build_keras(model, length=L_IN, wide=False):
+    """Keras twin of the PyTorch model.
+
+    wide=False: the signal runs along the HEIGHT axis, tensors are (length, 1, C). This is what the TFLM (CPU) build uses.
+    wide=True : the signal runs along the WIDTH axis, tensors are (1, length, C). The Axon NPU is fastest with a wide
+                aspect ratio (and pads every row to 4 bytes, which wastes memory when the width is 1), so use this for Axon.
+    Both compute the same function; only the tensor layout differs.
+    """
     import tensorflow as tf
     K = tf.keras.layers
     model = model.eval().cpu()
+
+    def kern(k):                                    # (k, 1) tall or (1, k) wide
+        return (1, k) if wide else (k, 1)
+
+    def wt(a):                                      # a: (k, cin, cout[, ...]) -> insert the unit axis
+        return a[None, ...] if wide else a[:, None, ...]
 
     def unit(x, u):
         act = "relu" if u.relu else None
         if u.dw is not None:
             w, b = _fold(u.dw, u.bn1)                                            # (cin,1,k)
-            lay = K.DepthwiseConv2D((u.dw.k, 1), strides=(u.dw.s, 1), padding="same", activation="relu")
+            lay = K.DepthwiseConv2D(kern(u.dw.k), strides=kern(u.dw.s), padding="same", activation="relu")
             x = lay(x)
-            lay.set_weights([w.transpose(2, 0, 1)[:, None, :, :], b])            # (k,1,cin,1)
+            lay.set_weights([wt(w.transpose(2, 0, 1)), b])                       # (k,cin,1) -> (k,1,cin,1) or (1,k,cin,1)
             w, b = _fold(u.pw, u.bn2)                                            # (cout,cin,1)
             lay = K.Conv2D(w.shape[0], (1, 1), activation=act)
             x = lay(x)
-            lay.set_weights([w.transpose(2, 1, 0)[:, None, :, :], b])            # (1,1,cin,cout)
+            lay.set_weights([wt(w.transpose(2, 1, 0)), b])                       # (1,1,cin,cout)
         else:
             w, b = _fold(u.conv, u.bn2)                                          # (cout,cin,k)
-            lay = K.Conv2D(w.shape[0], (u.conv.k, 1), strides=(u.conv.s, 1), padding="same", activation=act)
+            lay = K.Conv2D(w.shape[0], kern(u.conv.k), strides=kern(u.conv.s), padding="same", activation=act)
             x = lay(x)
-            lay.set_weights([w.transpose(2, 1, 0)[:, None, :, :], b])            # (k,1,cin,cout)
+            lay.set_weights([wt(w.transpose(2, 1, 0)), b])                       # (k,cin,cout) -> (k,1,cin,cout) or (1,k,cin,cout)
         return x
 
     def res(x, blk):
         y = unit(unit(x, blk.a), blk.b)
         return K.ReLU()(K.Add()([x, y]))
 
-    inp = tf.keras.Input(shape=(length, 1, 1), batch_size=1, name="ecg")
+    inp = tf.keras.Input(shape=((1, length, 1) if wide else (length, 1, 1)), batch_size=1, name="ecg")
     x = unit(inp, model.stem)
-    x = K.MaxPooling2D((2, 1), strides=(2, 1), padding="valid")(x)
+    x = K.MaxPooling2D(kern(2), strides=kern(2), padding="valid")(x)
     x = unit(x, model.down1)
     for b in model.res1:
         x = res(x, b)
@@ -253,11 +266,11 @@ def build_keras(model, length=L_IN):
 
 def quantize(kmodel, calib):
     import tensorflow as tf
-    length = kmodel.input_shape[1]
+    shape = (1,) + tuple(kmodel.input_shape[1:])
 
     def rep():
         for w in calib:
-            yield [np.asarray(w, np.float32).reshape(1, length, 1, 1)]
+            yield [np.asarray(w, np.float32).reshape(shape)]
 
     conv = tf.lite.TFLiteConverter.from_keras_model(kmodel)
     conv.optimizations = [tf.lite.Optimize.DEFAULT]
@@ -268,14 +281,15 @@ def quantize(kmodel, calib):
     return conv.convert()
 
 
-def export_int8(model, calib, out_path, check_x=None):
+def export_int8(model, calib, out_path, check_x=None, wide=False):
     """Fold BN, build the Keras twin, check it against PyTorch, quantize with real windows, write the .tflite."""
-    km = build_keras(model, calib.shape[1])
+    km = build_keras(model, calib.shape[1], wide=wide)
+    in_shape = (1,) + tuple(km.input_shape[1:])
     info = {}
     if check_x is not None:
         with torch.no_grad():
             ref = model.eval().cpu()(torch.from_numpy(np.asarray(check_x, np.float32))).numpy()
-        got = np.concatenate([km.predict(np.asarray(x, np.float32).reshape(1, -1, 1, 1), verbose=0).reshape(-1)
+        got = np.concatenate([km.predict(np.asarray(x, np.float32).reshape(in_shape), verbose=0).reshape(-1)
                               for x in check_x])
         info["keras_vs_torch_max_abs"] = float(np.abs(ref - got).max())
     blob = quantize(km, calib)
@@ -294,13 +308,16 @@ def main():
     e.add_argument("--eval-x", default=None, help="npy of windows to run through the int8 model")
     e.add_argument("--eval-out", default=None, help="where to write the int8 logits (npy)")
     e.add_argument("--report", default=None, help="json with sizes / ops / memory")
+    e.add_argument("--wide", action="store_true",
+                   help="signal along the width axis, tensors (1, 1000, C): the layout for the Axon NPU compiler")
     a = ap.parse_args()
     ck = torch.load(a.ckpt, map_location="cpu", weights_only=False)
     m = SmallECG(ck["cfg"])
     m.load_state_dict(ck["state"])
     calib = np.load(a.calib)
-    out = a.out or str(Path(a.ckpt).with_name(f"ecg_small_{ck.get('name', 'model')}_int8.tflite"))
-    info = export_int8(m, calib[:300], out, check_x=calib[:4])
+    suffix = "_axon" if a.wide else ""
+    out = a.out or str(Path(a.ckpt).with_name(f"ecg_small_{ck.get('name', 'model')}{suffix}_int8.tflite"))
+    info = export_int8(m, calib[:300], out, check_x=calib[:4], wide=a.wide)
     if a.eval_x or a.report:
         sys.path.insert(0, str(Path(__file__).resolve().parent))
         import eval_host as eh

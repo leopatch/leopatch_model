@@ -1,0 +1,22 @@
+{
+ "w50_b10": {
+  "n_windows": 199,
+  "exact_match": 0.9396984924623115,
+  "within_1": 1.0,
+  "max_abs_step_diff": 1,
+  "auc_fp32": 0.8685858585858587,
+  "auc_tflite_int8": 0.8718181818181818,
+  "auc_axon_sim": 0.8716161616161616,
+  "same_decision_axon_vs_tflite": 0.9949748743718593
+ },
+ "w25": {
+  "n_windows": 199,
+  "exact_match": 0.8492462311557789,
+  "within_1": 1.0,
+  "max_abs_step_diff": 1,
+  "auc_fp32": 0.856969696969697,
+  "auc_tflite_int8": 0.8625252525252525,
+  "auc_axon_sim": 0.8626262626262626,
+  "same_decision_axon_vs_tflite": 1.0
+ }
+}
