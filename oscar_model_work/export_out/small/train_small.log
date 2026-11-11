@@ -1,0 +1,487 @@
+05:30:20 torch 2.14.0 | device mps | tensorflow not installed (int8 export will be skipped; do it later with small_ecg.py export) | budget 180 min | out /Users/oscarzhang/Desktop/leopatch_model-main/export_out/small
+05:30:21 split: train 70,406 | val 14,471 | test 14,653 ECGs (3,000 test patients)
+05:30:21 reading 14,653 test ECGs (lead 8) from the HDF5 ... (first run only)
+05:30:27     reading test: 5,000/14,653  (6s, ~0 min left)
+05:30:33     reading test: 10,000/14,653  (12s, ~0 min left)
+05:30:39 reading 14,471 val ECGs (lead 8) from the HDF5 ... (first run only)
+05:30:45     reading val: 5,000/14,471  (6s, ~0 min left)
+05:30:51     reading val: 10,000/14,471  (12s, ~0 min left)
+05:30:56 reading 70,406 train ECGs (lead 8) from the HDF5 ... (first run only)
+05:31:01     reading train: 5,000/70,406  (5s, ~1 min left)
+05:31:05     reading train: 10,000/70,406  (9s, ~1 min left)
+05:31:09     reading train: 15,000/70,406  (14s, ~1 min left)
+05:31:14     reading train: 20,000/70,406  (18s, ~1 min left)
+05:31:18     reading train: 25,000/70,406  (22s, ~1 min left)
+05:31:22     reading train: 30,000/70,406  (27s, ~1 min left)
+05:31:27     reading train: 35,000/70,406  (31s, ~1 min left)
+05:31:32     reading train: 40,000/70,406  (36s, ~0 min left)
+05:31:36     reading train: 45,000/70,406  (41s, ~0 min left)
+05:31:41     reading train: 50,000/70,406  (45s, ~0 min left)
+05:31:45     reading train: 55,000/70,406  (50s, ~0 min left)
+05:31:50     reading train: 60,000/70,406  (54s, ~0 min left)
+05:31:54     reading train: 65,000/70,406  (58s, ~0 min left)
+05:31:58     reading train: 70,000/70,406  (62s, ~0 min left)
+05:31:59 resampling 500 Hz -> 100 Hz ...
+05:32:07 teacher torch vs numpy check: max|diff| = 4.17e-07  (expect < 1e-3)
+05:32:07 teacher on test (14,653 ECGs, 500 Hz) ...
+05:32:10     teacher 10,240/14,653  (3s)
+05:32:11 teacher on val (14,471 ECGs, 500 Hz) ...
+05:32:15     teacher 10,240/14,471  (3s)
+05:32:16 teacher on train (70,406 ECGs, 500 Hz) ...
+05:32:19     teacher 10,240/70,406  (3s)
+05:32:23     teacher 20,480/70,406  (7s)
+05:32:26     teacher 30,720/70,406  (10s)
+05:32:29     teacher 40,960/70,406  (14s)
+05:32:33     teacher 51,200/70,406  (17s)
+05:32:36     teacher 61,440/70,406  (20s)
+05:32:40 CURRENT MODEL on this test set: AUC 0.8383 [0.820, 0.856]  acc 75.0%  (threshold p>=0.565)
+05:32:40 data + teacher ready after 2.3 min; training ['w50', 'w50_sep', 'w25', 'w100', 'w50_nokd', 'w50_b10', 'w75_sep']
+05:32:41   [w50] 260,993 params, 38.6 M MACs, distillation=on, time slice 21 min, device mps
+05:32:49   [w50] epoch took 9s -> will run 60 epochs
+05:32:49   [w50] epoch 1/60  loss 1.5841  val AUC 0.7715  (best 0.7715 @ 1)  8s
+05:32:57   [w50] epoch 2/60  loss 1.5215  val AUC 0.7919  (best 0.7919 @ 2)  8s
+05:33:06   [w50] epoch 3/60  loss 1.5012  val AUC 0.8026  (best 0.8026 @ 3)  8s
+05:33:14   [w50] epoch 4/60  loss 1.4874  val AUC 0.8095  (best 0.8095 @ 4)  9s
+05:33:23   [w50] epoch 5/60  loss 1.4808  val AUC 0.8017  (best 0.8095 @ 4)  8s
+05:33:31   [w50] epoch 6/60  loss 1.4747  val AUC 0.8004  (best 0.8095 @ 4)  8s
+05:33:40   [w50] epoch 7/60  loss 1.4696  val AUC 0.7901  (best 0.8095 @ 4)  9s
+05:33:49   [w50] epoch 8/60  loss 1.4654  val AUC 0.8041  (best 0.8095 @ 4)  9s
+05:33:58   [w50] epoch 9/60  loss 1.4611  val AUC 0.7992  (best 0.8095 @ 4)  9s
+05:34:06   [w50] epoch 10/60  loss 1.4596  val AUC 0.8037  (best 0.8095 @ 4)  8s
+05:34:15   [w50] epoch 11/60  loss 1.4562  val AUC 0.7987  (best 0.8095 @ 4)  9s
+05:34:24   [w50] epoch 12/60  loss 1.4542  val AUC 0.8041  (best 0.8095 @ 4)  9s
+05:34:32   [w50] epoch 13/60  loss 1.4504  val AUC 0.8001  (best 0.8095 @ 4)  9s
+05:34:41   [w50] epoch 14/60  loss 1.4489  val AUC 0.8063  (best 0.8095 @ 4)  9s
+05:34:50   [w50] epoch 15/60  loss 1.4467  val AUC 0.8068  (best 0.8095 @ 4)  9s
+05:34:58   [w50] epoch 16/60  loss 1.4445  val AUC 0.8121  (best 0.8121 @ 16)  9s
+05:35:07   [w50] epoch 17/60  loss 1.4429  val AUC 0.7985  (best 0.8121 @ 16)  9s
+05:35:16   [w50] epoch 18/60  loss 1.4410  val AUC 0.8048  (best 0.8121 @ 16)  9s
+05:35:24   [w50] epoch 19/60  loss 1.4392  val AUC 0.8086  (best 0.8121 @ 16)  9s
+05:35:33   [w50] epoch 20/60  loss 1.4374  val AUC 0.8085  (best 0.8121 @ 16)  8s
+05:35:41   [w50] epoch 21/60  loss 1.4356  val AUC 0.8093  (best 0.8121 @ 16)  8s
+05:35:49   [w50] epoch 22/60  loss 1.4335  val AUC 0.7970  (best 0.8121 @ 16)  8s
+05:35:58   [w50] epoch 23/60  loss 1.4326  val AUC 0.8098  (best 0.8121 @ 16)  8s
+05:36:07   [w50] epoch 24/60  loss 1.4310  val AUC 0.8113  (best 0.8121 @ 16)  9s
+05:36:16   [w50] epoch 25/60  loss 1.4285  val AUC 0.8086  (best 0.8121 @ 16)  9s
+05:36:24   [w50] epoch 26/60  loss 1.4264  val AUC 0.8063  (best 0.8121 @ 16)  8s
+05:36:33   [w50] epoch 27/60  loss 1.4257  val AUC 0.8101  (best 0.8121 @ 16)  9s
+05:36:42   [w50] epoch 28/60  loss 1.4237  val AUC 0.8077  (best 0.8121 @ 16)  9s
+05:36:51   [w50] epoch 29/60  loss 1.4216  val AUC 0.8041  (best 0.8121 @ 16)  9s
+05:37:00   [w50] epoch 30/60  loss 1.4203  val AUC 0.8112  (best 0.8121 @ 16)  9s
+05:37:08   [w50] epoch 31/60  loss 1.4186  val AUC 0.8086  (best 0.8121 @ 16)  9s
+05:37:17   [w50] epoch 32/60  loss 1.4174  val AUC 0.8108  (best 0.8121 @ 16)  8s
+05:37:25   [w50] epoch 33/60  loss 1.4147  val AUC 0.8119  (best 0.8121 @ 16)  8s
+05:37:34   [w50] epoch 34/60  loss 1.4136  val AUC 0.8102  (best 0.8121 @ 16)  8s
+05:37:42   [w50] epoch 35/60  loss 1.4117  val AUC 0.8073  (best 0.8121 @ 16)  8s
+05:37:51   [w50] epoch 36/60  loss 1.4104  val AUC 0.8088  (best 0.8121 @ 16)  9s
+05:37:59   [w50] epoch 37/60  loss 1.4085  val AUC 0.8108  (best 0.8121 @ 16)  9s
+05:38:08   [w50] epoch 38/60  loss 1.4061  val AUC 0.8082  (best 0.8121 @ 16)  8s
+05:38:16   [w50] epoch 39/60  loss 1.4053  val AUC 0.8094  (best 0.8121 @ 16)  8s
+05:38:25   [w50] epoch 40/60  loss 1.4037  val AUC 0.8098  (best 0.8121 @ 16)  9s
+05:38:33   [w50] epoch 41/60  loss 1.4022  val AUC 0.8081  (best 0.8121 @ 16)  8s
+05:38:42   [w50] epoch 42/60  loss 1.4012  val AUC 0.8113  (best 0.8121 @ 16)  8s
+05:38:50   [w50] epoch 43/60  loss 1.4003  val AUC 0.8095  (best 0.8121 @ 16)  8s
+05:38:59   [w50] epoch 44/60  loss 1.3989  val AUC 0.8094  (best 0.8121 @ 16)  9s
+05:39:08   [w50] epoch 45/60  loss 1.3976  val AUC 0.8105  (best 0.8121 @ 16)  9s
+05:39:16   [w50] epoch 46/60  loss 1.3962  val AUC 0.8113  (best 0.8121 @ 16)  8s
+05:39:25   [w50] epoch 47/60  loss 1.3948  val AUC 0.8103  (best 0.8121 @ 16)  8s
+05:39:33   [w50] epoch 48/60  loss 1.3939  val AUC 0.8110  (best 0.8121 @ 16)  8s
+05:39:41   [w50] epoch 49/60  loss 1.3930  val AUC 0.8109  (best 0.8121 @ 16)  8s
+05:39:49   [w50] epoch 50/60  loss 1.3922  val AUC 0.8088  (best 0.8121 @ 16)  8s
+05:39:58   [w50] epoch 51/60  loss 1.3913  val AUC 0.8104  (best 0.8121 @ 16)  8s
+05:40:06   [w50] epoch 52/60  loss 1.3904  val AUC 0.8104  (best 0.8121 @ 16)  8s
+05:40:15   [w50] epoch 53/60  loss 1.3899  val AUC 0.8115  (best 0.8121 @ 16)  8s
+05:40:23   [w50] epoch 54/60  loss 1.3892  val AUC 0.8101  (best 0.8121 @ 16)  8s
+05:40:32   [w50] epoch 55/60  loss 1.3889  val AUC 0.8093  (best 0.8121 @ 16)  8s
+05:40:40   [w50] epoch 56/60  loss 1.3886  val AUC 0.8098  (best 0.8121 @ 16)  9s
+05:40:49   [w50] epoch 57/60  loss 1.3883  val AUC 0.8099  (best 0.8121 @ 16)  9s
+05:40:57   [w50] epoch 58/60  loss 1.3873  val AUC 0.8102  (best 0.8121 @ 16)  8s
+05:41:06   [w50] epoch 59/60  loss 1.3875  val AUC 0.8099  (best 0.8121 @ 16)  8s
+05:41:14   [w50] epoch 60/60  loss 1.3873  val AUC 0.8105  (best 0.8121 @ 16)  8s
+05:41:18 [w50] TEST AUC 0.8221 [0.800, 0.841]  dAUC vs current -0.0163 [-0.026, -0.007]  acc 73.8%  (38.6 M MACs)
+05:41:18 report updated: /Users/oscarzhang/Desktop/leopatch_model-main/export_out/small/RESULTS_small.md
+05:41:18   [w50_sep] 59,073 params, 8.3 M MACs, distillation=on, time slice 24 min, device mps
+05:41:27   [w50_sep] epoch took 9s -> will run 60 epochs
+05:41:27   [w50_sep] epoch 1/60  loss 1.5926  val AUC 0.7747  (best 0.7747 @ 1)  8s
+05:41:35   [w50_sep] epoch 2/60  loss 1.5201  val AUC 0.7818  (best 0.7818 @ 2)  9s
+05:41:44   [w50_sep] epoch 3/60  loss 1.5018  val AUC 0.8009  (best 0.8009 @ 3)  9s
+05:41:53   [w50_sep] epoch 4/60  loss 1.4888  val AUC 0.8036  (best 0.8036 @ 4)  9s
+05:42:01   [w50_sep] epoch 5/60  loss 1.4825  val AUC 0.8059  (best 0.8059 @ 5)  9s
+05:42:10   [w50_sep] epoch 6/60  loss 1.4777  val AUC 0.8031  (best 0.8059 @ 5)  9s
+05:42:18   [w50_sep] epoch 7/60  loss 1.4725  val AUC 0.8047  (best 0.8059 @ 5)  9s
+05:42:28   [w50_sep] epoch 8/60  loss 1.4698  val AUC 0.8118  (best 0.8118 @ 8)  9s
+05:42:36   [w50_sep] epoch 9/60  loss 1.4662  val AUC 0.8085  (best 0.8118 @ 8)  9s
+05:42:45   [w50_sep] epoch 10/60  loss 1.4645  val AUC 0.8059  (best 0.8118 @ 8)  9s
+05:42:54   [w50_sep] epoch 11/60  loss 1.4613  val AUC 0.8109  (best 0.8118 @ 8)  9s
+05:43:03   [w50_sep] epoch 12/60  loss 1.4602  val AUC 0.7930  (best 0.8118 @ 8)  9s
+05:43:12   [w50_sep] epoch 13/60  loss 1.4572  val AUC 0.8102  (best 0.8118 @ 8)  9s
+05:43:20   [w50_sep] epoch 14/60  loss 1.4567  val AUC 0.8119  (best 0.8119 @ 14)  9s
+05:43:29   [w50_sep] epoch 15/60  loss 1.4544  val AUC 0.8100  (best 0.8119 @ 14)  9s
+05:43:38   [w50_sep] epoch 16/60  loss 1.4527  val AUC 0.8064  (best 0.8119 @ 14)  9s
+05:43:47   [w50_sep] epoch 17/60  loss 1.4516  val AUC 0.8098  (best 0.8119 @ 14)  9s
+05:43:55   [w50_sep] epoch 18/60  loss 1.4499  val AUC 0.8053  (best 0.8119 @ 14)  9s
+05:44:05   [w50_sep] epoch 19/60  loss 1.4489  val AUC 0.8078  (best 0.8119 @ 14)  9s
+05:44:14   [w50_sep] epoch 20/60  loss 1.4474  val AUC 0.8067  (best 0.8119 @ 14)  9s
+05:44:23   [w50_sep] epoch 21/60  loss 1.4466  val AUC 0.8013  (best 0.8119 @ 14)  9s
+05:44:31   [w50_sep] epoch 22/60  loss 1.4441  val AUC 0.8042  (best 0.8119 @ 14)  9s
+05:44:40   [w50_sep] epoch 23/60  loss 1.4440  val AUC 0.8096  (best 0.8119 @ 14)  9s
+05:44:48   [w50_sep] epoch 24/60  loss 1.4434  val AUC 0.8105  (best 0.8119 @ 14)  8s
+05:44:57   [w50_sep] epoch 25/60  loss 1.4409  val AUC 0.8085  (best 0.8119 @ 14)  8s
+05:45:05   [w50_sep] epoch 26/60  loss 1.4400  val AUC 0.8099  (best 0.8119 @ 14)  8s
+05:45:14   [w50_sep] epoch 27/60  loss 1.4393  val AUC 0.8089  (best 0.8119 @ 14)  8s
+05:45:22   [w50_sep] epoch 28/60  loss 1.4389  val AUC 0.8075  (best 0.8119 @ 14)  8s
+05:45:30   [w50_sep] epoch 29/60  loss 1.4371  val AUC 0.8084  (best 0.8119 @ 14)  9s
+05:45:39   [w50_sep] epoch 30/60  loss 1.4360  val AUC 0.8105  (best 0.8119 @ 14)  9s
+05:45:48   [w50_sep] epoch 31/60  loss 1.4348  val AUC 0.8044  (best 0.8119 @ 14)  9s
+05:45:56   [w50_sep] epoch 32/60  loss 1.4337  val AUC 0.8060  (best 0.8119 @ 14)  9s
+05:46:05   [w50_sep] epoch 33/60  loss 1.4324  val AUC 0.8115  (best 0.8119 @ 14)  8s
+05:46:13   [w50_sep] epoch 34/60  loss 1.4316  val AUC 0.8067  (best 0.8119 @ 14)  8s
+05:46:22   [w50_sep] epoch 35/60  loss 1.4300  val AUC 0.8068  (best 0.8119 @ 14)  9s
+05:46:30   [w50_sep] epoch 36/60  loss 1.4288  val AUC 0.8094  (best 0.8119 @ 14)  9s
+05:46:39   [w50_sep] epoch 37/60  loss 1.4276  val AUC 0.8103  (best 0.8119 @ 14)  9s
+05:46:47   [w50_sep] epoch 38/60  loss 1.4267  val AUC 0.8089  (best 0.8119 @ 14)  9s
+05:46:56   [w50_sep] epoch 39/60  loss 1.4260  val AUC 0.8117  (best 0.8119 @ 14)  8s
+05:47:04   [w50_sep] epoch 40/60  loss 1.4249  val AUC 0.8087  (best 0.8119 @ 14)  9s
+05:47:13   [w50_sep] epoch 41/60  loss 1.4239  val AUC 0.8106  (best 0.8119 @ 14)  9s
+05:47:22   [w50_sep] epoch 42/60  loss 1.4230  val AUC 0.8120  (best 0.8120 @ 42)  9s
+05:47:31   [w50_sep] epoch 43/60  loss 1.4227  val AUC 0.8078  (best 0.8120 @ 42)  9s
+05:47:40   [w50_sep] epoch 44/60  loss 1.4217  val AUC 0.8106  (best 0.8120 @ 42)  9s
+05:47:49   [w50_sep] epoch 45/60  loss 1.4210  val AUC 0.8108  (best 0.8120 @ 42)  9s
+05:47:58   [w50_sep] epoch 46/60  loss 1.4200  val AUC 0.8100  (best 0.8120 @ 42)  9s
+05:48:06   [w50_sep] epoch 47/60  loss 1.4188  val AUC 0.8094  (best 0.8120 @ 42)  9s
+05:48:15   [w50_sep] epoch 48/60  loss 1.4177  val AUC 0.8090  (best 0.8120 @ 42)  9s
+05:48:23   [w50_sep] epoch 49/60  loss 1.4174  val AUC 0.8100  (best 0.8120 @ 42)  9s
+05:48:32   [w50_sep] epoch 50/60  loss 1.4169  val AUC 0.8075  (best 0.8120 @ 42)  9s
+05:48:41   [w50_sep] epoch 51/60  loss 1.4169  val AUC 0.8089  (best 0.8120 @ 42)  8s
+05:48:49   [w50_sep] epoch 52/60  loss 1.4162  val AUC 0.8099  (best 0.8120 @ 42)  8s
+05:48:58   [w50_sep] epoch 53/60  loss 1.4152  val AUC 0.8100  (best 0.8120 @ 42)  8s
+05:49:06   [w50_sep] epoch 54/60  loss 1.4153  val AUC 0.8091  (best 0.8120 @ 42)  8s
+05:49:14   [w50_sep] epoch 55/60  loss 1.4150  val AUC 0.8089  (best 0.8120 @ 42)  8s
+05:49:23   [w50_sep] epoch 56/60  loss 1.4152  val AUC 0.8095  (best 0.8120 @ 42)  8s
+05:49:31   [w50_sep] epoch 57/60  loss 1.4149  val AUC 0.8100  (best 0.8120 @ 42)  9s
+05:49:40   [w50_sep] epoch 58/60  loss 1.4140  val AUC 0.8097  (best 0.8120 @ 42)  8s
+05:49:48   [w50_sep] epoch 59/60  loss 1.4141  val AUC 0.8093  (best 0.8120 @ 42)  8s
+05:49:56   [w50_sep] epoch 60/60  loss 1.4142  val AUC 0.8094  (best 0.8120 @ 42)  8s
+05:50:03 [w50_sep] TEST AUC 0.8215 [0.799, 0.841]  dAUC vs current -0.0169 [-0.026, -0.008]  acc 74.3%  (8.3 M MACs)
+05:50:03 report updated: /Users/oscarzhang/Desktop/leopatch_model-main/export_out/small/RESULTS_small.md
+05:50:03   [w25] 65,473 params, 9.7 M MACs, distillation=on, time slice 27 min, device mps
+05:50:07   [w25] epoch took 4s -> will run 60 epochs
+05:50:07   [w25] epoch 1/60  loss 1.5942  val AUC 0.7775  (best 0.7775 @ 1)  4s
+05:50:10   [w25] epoch 2/60  loss 1.5266  val AUC 0.7871  (best 0.7871 @ 2)  3s
+05:50:14   [w25] epoch 3/60  loss 1.5079  val AUC 0.8007  (best 0.8007 @ 3)  3s
+05:50:17   [w25] epoch 4/60  loss 1.4931  val AUC 0.8007  (best 0.8007 @ 4)  3s
+05:50:21   [w25] epoch 5/60  loss 1.4877  val AUC 0.8035  (best 0.8035 @ 5)  3s
+05:50:24   [w25] epoch 6/60  loss 1.4813  val AUC 0.7941  (best 0.8035 @ 5)  3s
+05:50:27   [w25] epoch 7/60  loss 1.4756  val AUC 0.7881  (best 0.8035 @ 5)  4s
+05:50:31   [w25] epoch 8/60  loss 1.4722  val AUC 0.8046  (best 0.8046 @ 8)  3s
+05:50:34   [w25] epoch 9/60  loss 1.4682  val AUC 0.8003  (best 0.8046 @ 8)  3s
+05:50:38   [w25] epoch 10/60  loss 1.4656  val AUC 0.8046  (best 0.8046 @ 10)  3s
+05:50:41   [w25] epoch 11/60  loss 1.4634  val AUC 0.8058  (best 0.8058 @ 11)  3s
+05:50:45   [w25] epoch 12/60  loss 1.4610  val AUC 0.7889  (best 0.8058 @ 11)  3s
+05:50:48   [w25] epoch 13/60  loss 1.4579  val AUC 0.8078  (best 0.8078 @ 13)  3s
+05:50:51   [w25] epoch 14/60  loss 1.4570  val AUC 0.8089  (best 0.8089 @ 14)  3s
+05:50:55   [w25] epoch 15/60  loss 1.4549  val AUC 0.8023  (best 0.8089 @ 14)  3s
+05:50:58   [w25] epoch 16/60  loss 1.4533  val AUC 0.8042  (best 0.8089 @ 14)  3s
+05:51:02   [w25] epoch 17/60  loss 1.4514  val AUC 0.7999  (best 0.8089 @ 14)  3s
+05:51:05   [w25] epoch 18/60  loss 1.4499  val AUC 0.8060  (best 0.8089 @ 14)  3s
+05:51:09   [w25] epoch 19/60  loss 1.4488  val AUC 0.8103  (best 0.8103 @ 19)  3s
+05:51:12   [w25] epoch 20/60  loss 1.4463  val AUC 0.8092  (best 0.8103 @ 19)  3s
+05:51:15   [w25] epoch 21/60  loss 1.4460  val AUC 0.8031  (best 0.8103 @ 19)  3s
+05:51:19   [w25] epoch 22/60  loss 1.4438  val AUC 0.7926  (best 0.8103 @ 19)  3s
+05:51:22   [w25] epoch 23/60  loss 1.4437  val AUC 0.8112  (best 0.8112 @ 23)  3s
+05:51:26   [w25] epoch 24/60  loss 1.4425  val AUC 0.8092  (best 0.8112 @ 23)  3s
+05:51:29   [w25] epoch 25/60  loss 1.4404  val AUC 0.8073  (best 0.8112 @ 23)  3s
+05:51:33   [w25] epoch 26/60  loss 1.4389  val AUC 0.8066  (best 0.8112 @ 23)  3s
+05:51:36   [w25] epoch 27/60  loss 1.4379  val AUC 0.8099  (best 0.8112 @ 23)  3s
+05:51:39   [w25] epoch 28/60  loss 1.4368  val AUC 0.8027  (best 0.8112 @ 23)  3s
+05:51:43   [w25] epoch 29/60  loss 1.4356  val AUC 0.8044  (best 0.8112 @ 23)  3s
+05:51:46   [w25] epoch 30/60  loss 1.4348  val AUC 0.8061  (best 0.8112 @ 23)  3s
+05:51:50   [w25] epoch 31/60  loss 1.4334  val AUC 0.7988  (best 0.8112 @ 23)  3s
+05:51:53   [w25] epoch 32/60  loss 1.4323  val AUC 0.8075  (best 0.8112 @ 23)  3s
+05:51:56   [w25] epoch 33/60  loss 1.4305  val AUC 0.8046  (best 0.8112 @ 23)  3s
+05:52:00   [w25] epoch 34/60  loss 1.4295  val AUC 0.8053  (best 0.8112 @ 23)  3s
+05:52:03   [w25] epoch 35/60  loss 1.4290  val AUC 0.8060  (best 0.8112 @ 23)  3s
+05:52:07   [w25] epoch 36/60  loss 1.4270  val AUC 0.8050  (best 0.8112 @ 23)  3s
+05:52:10   [w25] epoch 37/60  loss 1.4264  val AUC 0.8092  (best 0.8112 @ 23)  3s
+05:52:14   [w25] epoch 38/60  loss 1.4249  val AUC 0.8037  (best 0.8112 @ 23)  3s
+05:52:17   [w25] epoch 39/60  loss 1.4249  val AUC 0.8079  (best 0.8112 @ 23)  3s
+05:52:20   [w25] epoch 40/60  loss 1.4230  val AUC 0.8011  (best 0.8112 @ 23)  3s
+05:52:24   [w25] epoch 41/60  loss 1.4223  val AUC 0.8045  (best 0.8112 @ 23)  3s
+05:52:27   [w25] epoch 42/60  loss 1.4212  val AUC 0.8045  (best 0.8112 @ 23)  3s
+05:52:31   [w25] epoch 43/60  loss 1.4207  val AUC 0.8047  (best 0.8112 @ 23)  3s
+05:52:34   [w25] epoch 44/60  loss 1.4191  val AUC 0.8064  (best 0.8112 @ 23)  3s
+05:52:38   [w25] epoch 45/60  loss 1.4186  val AUC 0.8071  (best 0.8112 @ 23)  3s
+05:52:41   [w25] epoch 46/60  loss 1.4175  val AUC 0.8066  (best 0.8112 @ 23)  3s
+05:52:44   [w25] epoch 47/60  loss 1.4168  val AUC 0.8060  (best 0.8112 @ 23)  3s
+05:52:48   [w25] epoch 48/60  loss 1.4162  val AUC 0.8074  (best 0.8112 @ 23)  3s
+05:52:51   [w25] epoch 49/60  loss 1.4155  val AUC 0.8071  (best 0.8112 @ 23)  3s
+05:52:55   [w25] epoch 50/60  loss 1.4150  val AUC 0.8040  (best 0.8112 @ 23)  3s
+05:52:58   [w25] epoch 51/60  loss 1.4148  val AUC 0.8069  (best 0.8112 @ 23)  3s
+05:53:01   [w25] epoch 52/60  loss 1.4143  val AUC 0.8060  (best 0.8112 @ 23)  3s
+05:53:05   [w25] epoch 53/60  loss 1.4135  val AUC 0.8065  (best 0.8112 @ 23)  3s
+05:53:08   [w25] epoch 54/60  loss 1.4134  val AUC 0.8063  (best 0.8112 @ 23)  3s
+05:53:12   [w25] epoch 55/60  loss 1.4129  val AUC 0.8046  (best 0.8112 @ 23)  3s
+05:53:15   [w25] epoch 56/60  loss 1.4126  val AUC 0.8053  (best 0.8112 @ 23)  3s
+05:53:19   [w25] epoch 57/60  loss 1.4125  val AUC 0.8053  (best 0.8112 @ 23)  3s
+05:53:22   [w25] epoch 58/60  loss 1.4120  val AUC 0.8054  (best 0.8112 @ 23)  3s
+05:53:25   [w25] epoch 59/60  loss 1.4117  val AUC 0.8055  (best 0.8112 @ 23)  3s
+05:53:29   [w25] epoch 60/60  loss 1.4117  val AUC 0.8059  (best 0.8112 @ 23)  3s
+05:53:31 [w25] TEST AUC 0.8236 [0.803, 0.843]  dAUC vs current -0.0147 [-0.022, -0.008]  acc 74.1%  (9.7 M MACs)
+05:53:31 report updated: /Users/oscarzhang/Desktop/leopatch_model-main/export_out/small/RESULTS_small.md
+05:53:31   [w100] 1,042,177 params, 154.1 M MACs, distillation=on, time slice 53 min, device mps
+05:53:57   [w100] epoch took 27s -> will run 60 epochs
+05:53:57   [w100] epoch 1/60  loss 1.5736  val AUC 0.7651  (best 0.7651 @ 1)  25s
+05:54:22   [w100] epoch 2/60  loss 1.5191  val AUC 0.7890  (best 0.7890 @ 2)  25s
+05:54:48   [w100] epoch 3/60  loss 1.4973  val AUC 0.8012  (best 0.8012 @ 3)  25s
+05:55:13   [w100] epoch 4/60  loss 1.4843  val AUC 0.8103  (best 0.8103 @ 4)  25s
+05:55:39   [w100] epoch 5/60  loss 1.4772  val AUC 0.7906  (best 0.8103 @ 4)  25s
+05:56:04   [w100] epoch 6/60  loss 1.4703  val AUC 0.8020  (best 0.8103 @ 4)  25s
+05:56:29   [w100] epoch 7/60  loss 1.4649  val AUC 0.7900  (best 0.8103 @ 4)  25s
+05:56:55   [w100] epoch 8/60  loss 1.4607  val AUC 0.8043  (best 0.8103 @ 4)  25s
+05:57:20   [w100] epoch 9/60  loss 1.4557  val AUC 0.8005  (best 0.8103 @ 4)  25s
+05:57:46   [w100] epoch 10/60  loss 1.4543  val AUC 0.8061  (best 0.8103 @ 4)  25s
+05:58:11   [w100] epoch 11/60  loss 1.4517  val AUC 0.8061  (best 0.8103 @ 4)  25s
+05:58:36   [w100] epoch 12/60  loss 1.4486  val AUC 0.8016  (best 0.8103 @ 4)  25s
+05:59:02   [w100] epoch 13/60  loss 1.4450  val AUC 0.8071  (best 0.8103 @ 4)  25s
+05:59:27   [w100] epoch 14/60  loss 1.4437  val AUC 0.8067  (best 0.8103 @ 4)  25s
+05:59:53   [w100] epoch 15/60  loss 1.4409  val AUC 0.8039  (best 0.8103 @ 4)  25s
+06:00:18   [w100] epoch 16/60  loss 1.4380  val AUC 0.8125  (best 0.8125 @ 16)  25s
+06:00:43   [w100] epoch 17/60  loss 1.4368  val AUC 0.8088  (best 0.8125 @ 16)  25s
+06:01:09   [w100] epoch 18/60  loss 1.4340  val AUC 0.8064  (best 0.8125 @ 16)  25s
+06:01:34   [w100] epoch 19/60  loss 1.4320  val AUC 0.8093  (best 0.8125 @ 16)  25s
+06:01:59   [w100] epoch 20/60  loss 1.4300  val AUC 0.8094  (best 0.8125 @ 16)  25s
+06:02:25   [w100] epoch 21/60  loss 1.4274  val AUC 0.8100  (best 0.8125 @ 16)  25s
+06:02:50   [w100] epoch 22/60  loss 1.4250  val AUC 0.8025  (best 0.8125 @ 16)  25s
+06:03:15   [w100] epoch 23/60  loss 1.4242  val AUC 0.8160  (best 0.8160 @ 23)  25s
+06:03:41   [w100] epoch 24/60  loss 1.4215  val AUC 0.8127  (best 0.8160 @ 23)  25s
+06:04:06   [w100] epoch 25/60  loss 1.4187  val AUC 0.8063  (best 0.8160 @ 23)  25s
+06:04:31   [w100] epoch 26/60  loss 1.4163  val AUC 0.8132  (best 0.8160 @ 23)  25s
+06:04:57   [w100] epoch 27/60  loss 1.4149  val AUC 0.8059  (best 0.8160 @ 23)  25s
+06:05:22   [w100] epoch 28/60  loss 1.4130  val AUC 0.8123  (best 0.8160 @ 23)  25s
+06:05:47   [w100] epoch 29/60  loss 1.4094  val AUC 0.8060  (best 0.8160 @ 23)  25s
+06:06:13   [w100] epoch 30/60  loss 1.4074  val AUC 0.8110  (best 0.8160 @ 23)  25s
+06:06:38   [w100] epoch 31/60  loss 1.4060  val AUC 0.8082  (best 0.8160 @ 23)  25s
+06:07:03   [w100] epoch 32/60  loss 1.4032  val AUC 0.8145  (best 0.8160 @ 23)  25s
+06:07:29   [w100] epoch 33/60  loss 1.4006  val AUC 0.8108  (best 0.8160 @ 23)  26s
+06:07:54   [w100] epoch 34/60  loss 1.3978  val AUC 0.8120  (best 0.8160 @ 23)  25s
+06:08:20   [w100] epoch 35/60  loss 1.3959  val AUC 0.8124  (best 0.8160 @ 23)  25s
+06:08:45   [w100] epoch 36/60  loss 1.3938  val AUC 0.8104  (best 0.8160 @ 23)  25s
+06:09:10   [w100] epoch 37/60  loss 1.3912  val AUC 0.8101  (best 0.8160 @ 23)  25s
+06:09:36   [w100] epoch 38/60  loss 1.3888  val AUC 0.8105  (best 0.8160 @ 23)  25s
+06:10:01   [w100] epoch 39/60  loss 1.3868  val AUC 0.8110  (best 0.8160 @ 23)  25s
+06:10:26   [w100] epoch 40/60  loss 1.3843  val AUC 0.8095  (best 0.8160 @ 23)  25s
+06:10:52   [w100] epoch 41/60  loss 1.3825  val AUC 0.8102  (best 0.8160 @ 23)  25s
+06:11:17   [w100] epoch 42/60  loss 1.3803  val AUC 0.8104  (best 0.8160 @ 23)  26s
+06:11:43   [w100] epoch 43/60  loss 1.3789  val AUC 0.8083  (best 0.8160 @ 23)  26s
+06:12:09   [w100] epoch 44/60  loss 1.3766  val AUC 0.8084  (best 0.8160 @ 23)  26s
+06:12:34   [w100] epoch 45/60  loss 1.3749  val AUC 0.8094  (best 0.8160 @ 23)  26s
+06:13:00   [w100] epoch 46/60  loss 1.3728  val AUC 0.8086  (best 0.8160 @ 23)  26s
+06:13:26   [w100] epoch 47/60  loss 1.3711  val AUC 0.8090  (best 0.8160 @ 23)  26s
+06:13:51   [w100] epoch 48/60  loss 1.3700  val AUC 0.8078  (best 0.8160 @ 23)  26s
+06:14:17   [w100] epoch 49/60  loss 1.3681  val AUC 0.8077  (best 0.8160 @ 23)  26s
+06:14:43   [w100] epoch 50/60  loss 1.3672  val AUC 0.8081  (best 0.8160 @ 23)  26s
+06:15:08   [w100] epoch 51/60  loss 1.3662  val AUC 0.8082  (best 0.8160 @ 23)  26s
+06:15:34   [w100] epoch 52/60  loss 1.3653  val AUC 0.8083  (best 0.8160 @ 23)  26s
+06:15:59   [w100] epoch 53/60  loss 1.3642  val AUC 0.8087  (best 0.8160 @ 23)  26s
+06:16:25   [w100] epoch 54/60  loss 1.3637  val AUC 0.8078  (best 0.8160 @ 23)  26s
+06:16:51   [w100] epoch 55/60  loss 1.3632  val AUC 0.8080  (best 0.8160 @ 23)  26s
+06:17:16   [w100] epoch 56/60  loss 1.3627  val AUC 0.8082  (best 0.8160 @ 23)  26s
+06:17:42   [w100] epoch 57/60  loss 1.3624  val AUC 0.8085  (best 0.8160 @ 23)  26s
+06:18:08   [w100] epoch 58/60  loss 1.3616  val AUC 0.8083  (best 0.8160 @ 23)  26s
+06:18:33   [w100] epoch 59/60  loss 1.3617  val AUC 0.8081  (best 0.8160 @ 23)  26s
+06:18:59   [w100] epoch 60/60  loss 1.3613  val AUC 0.8082  (best 0.8160 @ 23)  26s
+06:19:06 [w100] TEST AUC 0.8239 [0.802, 0.842]  dAUC vs current -0.0144 [-0.024, -0.006]  acc 74.1%  (154.1 M MACs)
+06:19:06 report updated: /Users/oscarzhang/Desktop/leopatch_model-main/export_out/small/RESULTS_small.md
+06:19:06   [w50_nokd] 260,993 params, 38.6 M MACs, distillation=off, time slice 42 min, device mps
+06:19:14   [w50_nokd] epoch took 8s -> will run 60 epochs
+06:19:14   [w50_nokd] epoch 1/60  loss 0.6066  val AUC 0.7376  (best 0.7376 @ 1)  8s
+06:19:22   [w50_nokd] epoch 2/60  loss 0.5647  val AUC 0.7716  (best 0.7716 @ 2)  8s
+06:19:31   [w50_nokd] epoch 3/60  loss 0.5485  val AUC 0.7921  (best 0.7921 @ 3)  9s
+06:19:40   [w50_nokd] epoch 4/60  loss 0.5352  val AUC 0.7858  (best 0.7921 @ 3)  9s
+06:19:49   [w50_nokd] epoch 5/60  loss 0.5270  val AUC 0.7976  (best 0.7976 @ 5)  9s
+06:19:58   [w50_nokd] epoch 6/60  loss 0.5200  val AUC 0.7870  (best 0.7976 @ 5)  9s
+06:20:07   [w50_nokd] epoch 7/60  loss 0.5147  val AUC 0.8044  (best 0.8044 @ 7)  9s
+06:20:15   [w50_nokd] epoch 8/60  loss 0.5079  val AUC 0.8125  (best 0.8125 @ 8)  9s
+06:20:24   [w50_nokd] epoch 9/60  loss 0.5021  val AUC 0.8042  (best 0.8125 @ 8)  9s
+06:20:33   [w50_nokd] epoch 10/60  loss 0.4972  val AUC 0.8073  (best 0.8125 @ 8)  9s
+06:20:42   [w50_nokd] epoch 11/60  loss 0.4931  val AUC 0.7958  (best 0.8125 @ 8)  9s
+06:20:51   [w50_nokd] epoch 12/60  loss 0.4883  val AUC 0.7920  (best 0.8125 @ 8)  9s
+06:20:59   [w50_nokd] epoch 13/60  loss 0.4824  val AUC 0.8049  (best 0.8125 @ 8)  9s
+06:21:08   [w50_nokd] epoch 14/60  loss 0.4782  val AUC 0.8062  (best 0.8125 @ 8)  9s
+06:21:17   [w50_nokd] epoch 15/60  loss 0.4717  val AUC 0.8003  (best 0.8125 @ 8)  9s
+06:21:25   [w50_nokd] epoch 16/60  loss 0.4677  val AUC 0.7961  (best 0.8125 @ 8)  9s
+06:21:34   [w50_nokd] epoch 17/60  loss 0.4625  val AUC 0.7984  (best 0.8125 @ 8)  9s
+06:21:43   [w50_nokd] epoch 18/60  loss 0.4572  val AUC 0.7959  (best 0.8125 @ 8)  9s
+06:21:52   [w50_nokd] epoch 19/60  loss 0.4543  val AUC 0.7974  (best 0.8125 @ 8)  9s
+06:22:00   [w50_nokd] epoch 20/60  loss 0.4490  val AUC 0.8037  (best 0.8125 @ 8)  9s
+06:22:09   [w50_nokd] epoch 21/60  loss 0.4442  val AUC 0.7984  (best 0.8125 @ 8)  9s
+06:22:18   [w50_nokd] epoch 22/60  loss 0.4370  val AUC 0.7979  (best 0.8125 @ 8)  9s
+06:22:27   [w50_nokd] epoch 23/60  loss 0.4345  val AUC 0.7956  (best 0.8125 @ 8)  9s
+06:22:35   [w50_nokd] epoch 24/60  loss 0.4274  val AUC 0.8006  (best 0.8125 @ 8)  9s
+06:22:44   [w50_nokd] epoch 25/60  loss 0.4196  val AUC 0.7980  (best 0.8125 @ 8)  9s
+06:22:53   [w50_nokd] epoch 26/60  loss 0.4154  val AUC 0.7937  (best 0.8125 @ 8)  9s
+06:23:02   [w50_nokd] epoch 27/60  loss 0.4084  val AUC 0.7904  (best 0.8125 @ 8)  9s
+06:23:10   [w50_nokd] epoch 28/60  loss 0.4018  val AUC 0.7924  (best 0.8125 @ 8)  9s
+06:23:19   [w50_nokd] epoch 29/60  loss 0.3933  val AUC 0.7944  (best 0.8125 @ 8)  9s
+06:23:28   [w50_nokd] epoch 30/60  loss 0.3887  val AUC 0.7915  (best 0.8125 @ 8)  9s
+06:23:37   [w50_nokd] epoch 31/60  loss 0.3814  val AUC 0.7852  (best 0.8125 @ 8)  9s
+06:23:45   [w50_nokd] epoch 32/60  loss 0.3760  val AUC 0.7913  (best 0.8125 @ 8)  9s
+06:23:54   [w50_nokd] epoch 33/60  loss 0.3660  val AUC 0.7901  (best 0.8125 @ 8)  9s
+06:24:03   [w50_nokd] epoch 34/60  loss 0.3594  val AUC 0.7929  (best 0.8125 @ 8)  9s
+06:24:11   [w50_nokd] epoch 35/60  loss 0.3521  val AUC 0.7854  (best 0.8125 @ 8)  9s
+06:24:20   [w50_nokd] epoch 36/60  loss 0.3450  val AUC 0.7849  (best 0.8125 @ 8)  9s
+06:24:29   [w50_nokd] epoch 37/60  loss 0.3360  val AUC 0.7846  (best 0.8125 @ 8)  9s
+06:24:38   [w50_nokd] epoch 38/60  loss 0.3278  val AUC 0.7810  (best 0.8125 @ 8)  9s
+06:24:46   [w50_nokd] epoch 39/60  loss 0.3227  val AUC 0.7850  (best 0.8125 @ 8)  9s
+06:24:55   [w50_nokd] epoch 40/60  loss 0.3166  val AUC 0.7824  (best 0.8125 @ 8)  9s
+06:25:04   [w50_nokd] epoch 41/60  loss 0.3089  val AUC 0.7832  (best 0.8125 @ 8)  9s
+06:25:12   [w50_nokd] epoch 42/60  loss 0.3031  val AUC 0.7812  (best 0.8125 @ 8)  9s
+06:25:21   [w50_nokd] epoch 43/60  loss 0.2966  val AUC 0.7800  (best 0.8125 @ 8)  9s
+06:25:30   [w50_nokd] epoch 44/60  loss 0.2910  val AUC 0.7786  (best 0.8125 @ 8)  9s
+06:25:39   [w50_nokd] epoch 45/60  loss 0.2849  val AUC 0.7749  (best 0.8125 @ 8)  9s
+06:25:47   [w50_nokd] epoch 46/60  loss 0.2778  val AUC 0.7778  (best 0.8125 @ 8)  9s
+06:25:56   [w50_nokd] epoch 47/60  loss 0.2733  val AUC 0.7746  (best 0.8125 @ 8)  9s
+06:26:05   [w50_nokd] epoch 48/60  loss 0.2679  val AUC 0.7755  (best 0.8125 @ 8)  9s
+06:26:13   [w50_nokd] epoch 49/60  loss 0.2643  val AUC 0.7781  (best 0.8125 @ 8)  9s
+06:26:22   [w50_nokd] epoch 50/60  loss 0.2587  val AUC 0.7730  (best 0.8125 @ 8)  9s
+06:26:31   [w50_nokd] epoch 51/60  loss 0.2549  val AUC 0.7740  (best 0.8125 @ 8)  9s
+06:26:39   [w50_nokd] epoch 52/60  loss 0.2508  val AUC 0.7758  (best 0.8125 @ 8)  9s
+06:26:48   [w50_nokd] epoch 53/60  loss 0.2489  val AUC 0.7749  (best 0.8125 @ 8)  9s
+06:26:57   [w50_nokd] epoch 54/60  loss 0.2481  val AUC 0.7741  (best 0.8125 @ 8)  9s
+06:27:06   [w50_nokd] epoch 55/60  loss 0.2460  val AUC 0.7739  (best 0.8125 @ 8)  9s
+06:27:14   [w50_nokd] epoch 56/60  loss 0.2419  val AUC 0.7741  (best 0.8125 @ 8)  9s
+06:27:23   [w50_nokd] epoch 57/60  loss 0.2423  val AUC 0.7753  (best 0.8125 @ 8)  9s
+06:27:32   [w50_nokd] epoch 58/60  loss 0.2388  val AUC 0.7735  (best 0.8125 @ 8)  9s
+06:27:40   [w50_nokd] epoch 59/60  loss 0.2388  val AUC 0.7739  (best 0.8125 @ 8)  9s
+06:27:49   [w50_nokd] epoch 60/60  loss 0.2381  val AUC 0.7741  (best 0.8125 @ 8)  9s
+06:27:53 [w50_nokd] TEST AUC 0.8164 [0.794, 0.838]  dAUC vs current -0.0220 [-0.034, -0.011]  acc 73.7%  (38.6 M MACs)
+06:27:53 report updated: /Users/oscarzhang/Desktop/leopatch_model-main/export_out/small/RESULTS_small.md
+06:27:53   [w50_b10] 96,897 params, 18.1 M MACs, distillation=on, time slice 59 min, device mps
+06:27:58   [w50_b10] epoch took 5s -> will run 60 epochs
+06:27:58   [w50_b10] epoch 1/60  loss 1.5967  val AUC 0.7649  (best 0.7649 @ 1)  5s
+06:28:03   [w50_b10] epoch 2/60  loss 1.5327  val AUC 0.7793  (best 0.7793 @ 2)  5s
+06:28:08   [w50_b10] epoch 3/60  loss 1.5118  val AUC 0.7838  (best 0.7838 @ 3)  5s
+06:28:14   [w50_b10] epoch 4/60  loss 1.4949  val AUC 0.7995  (best 0.7995 @ 4)  6s
+06:28:20   [w50_b10] epoch 5/60  loss 1.4880  val AUC 0.7988  (best 0.7995 @ 4)  6s
+06:28:26   [w50_b10] epoch 6/60  loss 1.4821  val AUC 0.7928  (best 0.7995 @ 4)  6s
+06:28:31   [w50_b10] epoch 7/60  loss 1.4750  val AUC 0.7832  (best 0.7995 @ 4)  6s
+06:28:37   [w50_b10] epoch 8/60  loss 1.4718  val AUC 0.7990  (best 0.7995 @ 4)  6s
+06:28:42   [w50_b10] epoch 9/60  loss 1.4676  val AUC 0.7981  (best 0.7995 @ 4)  6s
+06:28:48   [w50_b10] epoch 10/60  loss 1.4659  val AUC 0.8024  (best 0.8024 @ 10)  6s
+06:28:54   [w50_b10] epoch 11/60  loss 1.4628  val AUC 0.8056  (best 0.8056 @ 11)  6s
+06:28:59   [w50_b10] epoch 12/60  loss 1.4602  val AUC 0.7937  (best 0.8056 @ 11)  6s
+06:29:05   [w50_b10] epoch 13/60  loss 1.4565  val AUC 0.8094  (best 0.8094 @ 13)  6s
+06:29:10   [w50_b10] epoch 14/60  loss 1.4561  val AUC 0.8097  (best 0.8097 @ 14)  6s
+06:29:16   [w50_b10] epoch 15/60  loss 1.4538  val AUC 0.7990  (best 0.8097 @ 14)  6s
+06:29:22   [w50_b10] epoch 16/60  loss 1.4517  val AUC 0.7987  (best 0.8097 @ 14)  6s
+06:29:27   [w50_b10] epoch 17/60  loss 1.4505  val AUC 0.8044  (best 0.8097 @ 14)  6s
+06:29:33   [w50_b10] epoch 18/60  loss 1.4488  val AUC 0.8004  (best 0.8097 @ 14)  6s
+06:29:38   [w50_b10] epoch 19/60  loss 1.4472  val AUC 0.8040  (best 0.8097 @ 14)  6s
+06:29:44   [w50_b10] epoch 20/60  loss 1.4453  val AUC 0.8029  (best 0.8097 @ 14)  6s
+06:29:50   [w50_b10] epoch 21/60  loss 1.4442  val AUC 0.8028  (best 0.8097 @ 14)  6s
+06:29:55   [w50_b10] epoch 22/60  loss 1.4428  val AUC 0.7997  (best 0.8097 @ 14)  6s
+06:30:01   [w50_b10] epoch 23/60  loss 1.4424  val AUC 0.8096  (best 0.8097 @ 14)  6s
+06:30:06   [w50_b10] epoch 24/60  loss 1.4411  val AUC 0.8090  (best 0.8097 @ 14)  6s
+06:30:12   [w50_b10] epoch 25/60  loss 1.4392  val AUC 0.8042  (best 0.8097 @ 14)  6s
+06:30:18   [w50_b10] epoch 26/60  loss 1.4376  val AUC 0.8065  (best 0.8097 @ 14)  6s
+06:30:23   [w50_b10] epoch 27/60  loss 1.4370  val AUC 0.8066  (best 0.8097 @ 14)  6s
+06:30:29   [w50_b10] epoch 28/60  loss 1.4360  val AUC 0.8072  (best 0.8097 @ 14)  6s
+06:30:34   [w50_b10] epoch 29/60  loss 1.4336  val AUC 0.8043  (best 0.8097 @ 14)  6s
+06:30:40   [w50_b10] epoch 30/60  loss 1.4323  val AUC 0.8104  (best 0.8104 @ 30)  6s
+06:30:46   [w50_b10] epoch 31/60  loss 1.4319  val AUC 0.8040  (best 0.8104 @ 30)  6s
+06:30:51   [w50_b10] epoch 32/60  loss 1.4308  val AUC 0.8065  (best 0.8104 @ 30)  6s
+06:30:57   [w50_b10] epoch 33/60  loss 1.4290  val AUC 0.8074  (best 0.8104 @ 30)  6s
+06:31:02   [w50_b10] epoch 34/60  loss 1.4275  val AUC 0.8077  (best 0.8104 @ 30)  6s
+06:31:08   [w50_b10] epoch 35/60  loss 1.4266  val AUC 0.8038  (best 0.8104 @ 30)  6s
+06:31:14   [w50_b10] epoch 36/60  loss 1.4250  val AUC 0.8061  (best 0.8104 @ 30)  6s
+06:31:19   [w50_b10] epoch 37/60  loss 1.4241  val AUC 0.8060  (best 0.8104 @ 30)  6s
+06:31:25   [w50_b10] epoch 38/60  loss 1.4224  val AUC 0.8050  (best 0.8104 @ 30)  6s
+06:31:30   [w50_b10] epoch 39/60  loss 1.4220  val AUC 0.8070  (best 0.8104 @ 30)  6s
+06:31:36   [w50_b10] epoch 40/60  loss 1.4207  val AUC 0.8052  (best 0.8104 @ 30)  6s
+06:31:41   [w50_b10] epoch 41/60  loss 1.4196  val AUC 0.8074  (best 0.8104 @ 30)  6s
+06:31:47   [w50_b10] epoch 42/60  loss 1.4184  val AUC 0.8081  (best 0.8104 @ 30)  6s
+06:31:53   [w50_b10] epoch 43/60  loss 1.4182  val AUC 0.8069  (best 0.8104 @ 30)  6s
+06:31:58   [w50_b10] epoch 44/60  loss 1.4172  val AUC 0.8040  (best 0.8104 @ 30)  6s
+06:32:04   [w50_b10] epoch 45/60  loss 1.4157  val AUC 0.8068  (best 0.8104 @ 30)  6s
+06:32:09   [w50_b10] epoch 46/60  loss 1.4147  val AUC 0.8076  (best 0.8104 @ 30)  6s
+06:32:15   [w50_b10] epoch 47/60  loss 1.4141  val AUC 0.8070  (best 0.8104 @ 30)  6s
+06:32:21   [w50_b10] epoch 48/60  loss 1.4131  val AUC 0.8064  (best 0.8104 @ 30)  6s
+06:32:26   [w50_b10] epoch 49/60  loss 1.4123  val AUC 0.8060  (best 0.8104 @ 30)  6s
+06:32:32   [w50_b10] epoch 50/60  loss 1.4117  val AUC 0.8043  (best 0.8104 @ 30)  6s
+06:32:37   [w50_b10] epoch 51/60  loss 1.4113  val AUC 0.8079  (best 0.8104 @ 30)  6s
+06:32:43   [w50_b10] epoch 52/60  loss 1.4107  val AUC 0.8059  (best 0.8104 @ 30)  6s
+06:32:48   [w50_b10] epoch 53/60  loss 1.4100  val AUC 0.8068  (best 0.8104 @ 30)  6s
+06:32:54   [w50_b10] epoch 54/60  loss 1.4093  val AUC 0.8058  (best 0.8104 @ 30)  6s
+06:33:00   [w50_b10] epoch 55/60  loss 1.4095  val AUC 0.8057  (best 0.8104 @ 30)  6s
+06:33:05   [w50_b10] epoch 56/60  loss 1.4094  val AUC 0.8058  (best 0.8104 @ 30)  6s
+06:33:11   [w50_b10] epoch 57/60  loss 1.4089  val AUC 0.8060  (best 0.8104 @ 30)  6s
+06:33:16   [w50_b10] epoch 58/60  loss 1.4085  val AUC 0.8061  (best 0.8104 @ 30)  6s
+06:33:22   [w50_b10] epoch 59/60  loss 1.4083  val AUC 0.8058  (best 0.8104 @ 30)  6s
+06:33:28   [w50_b10] epoch 60/60  loss 1.4082  val AUC 0.8067  (best 0.8104 @ 30)  6s
+06:33:30 [w50_b10] TEST AUC 0.8256 [0.805, 0.843]  dAUC vs current -0.0128 [-0.020, -0.006]  acc 74.4%  (18.1 M MACs)
+06:33:30 report updated: /Users/oscarzhang/Desktop/leopatch_model-main/export_out/small/RESULTS_small.md
+06:33:31   [w75_sep] 130,081 params, 18.2 M MACs, distillation=on, time slice 115 min, device mps
+06:33:44   [w75_sep] epoch took 14s -> will run 60 epochs
+06:33:44   [w75_sep] epoch 1/60  loss 1.5797  val AUC 0.7907  (best 0.7907 @ 1)  13s
+06:33:57   [w75_sep] epoch 2/60  loss 1.5095  val AUC 0.7846  (best 0.7907 @ 1)  13s
+06:34:11   [w75_sep] epoch 3/60  loss 1.4906  val AUC 0.8019  (best 0.8019 @ 3)  14s
+06:34:25   [w75_sep] epoch 4/60  loss 1.4786  val AUC 0.7986  (best 0.8019 @ 3)  14s
+06:34:39   [w75_sep] epoch 5/60  loss 1.4740  val AUC 0.8036  (best 0.8036 @ 5)  14s
+06:34:53   [w75_sep] epoch 6/60  loss 1.4681  val AUC 0.8027  (best 0.8036 @ 5)  14s
+06:35:06   [w75_sep] epoch 7/60  loss 1.4631  val AUC 0.7975  (best 0.8036 @ 5)  14s
+06:35:20   [w75_sep] epoch 8/60  loss 1.4601  val AUC 0.8072  (best 0.8072 @ 8)  14s
+06:35:34   [w75_sep] epoch 9/60  loss 1.4572  val AUC 0.8095  (best 0.8095 @ 9)  14s
+06:35:47   [w75_sep] epoch 10/60  loss 1.4550  val AUC 0.8065  (best 0.8095 @ 9)  14s
+06:36:01   [w75_sep] epoch 11/60  loss 1.4528  val AUC 0.8064  (best 0.8095 @ 9)  14s
+06:36:15   [w75_sep] epoch 12/60  loss 1.4510  val AUC 0.8024  (best 0.8095 @ 9)  14s
+06:36:29   [w75_sep] epoch 13/60  loss 1.4479  val AUC 0.8055  (best 0.8095 @ 9)  14s
+06:36:43   [w75_sep] epoch 14/60  loss 1.4475  val AUC 0.8077  (best 0.8095 @ 9)  14s
+06:36:56   [w75_sep] epoch 15/60  loss 1.4448  val AUC 0.8088  (best 0.8095 @ 9)  14s
+06:37:10   [w75_sep] epoch 16/60  loss 1.4431  val AUC 0.8091  (best 0.8095 @ 9)  14s
+06:37:24   [w75_sep] epoch 17/60  loss 1.4423  val AUC 0.8086  (best 0.8095 @ 9)  14s
+06:37:38   [w75_sep] epoch 18/60  loss 1.4411  val AUC 0.8021  (best 0.8095 @ 9)  14s
+06:37:51   [w75_sep] epoch 19/60  loss 1.4391  val AUC 0.8094  (best 0.8095 @ 9)  14s
+06:38:05   [w75_sep] epoch 20/60  loss 1.4377  val AUC 0.8110  (best 0.8110 @ 20)  14s
+06:38:19   [w75_sep] epoch 21/60  loss 1.4364  val AUC 0.8030  (best 0.8110 @ 20)  14s
+06:38:33   [w75_sep] epoch 22/60  loss 1.4350  val AUC 0.8054  (best 0.8110 @ 20)  14s
+06:38:46   [w75_sep] epoch 23/60  loss 1.4349  val AUC 0.8063  (best 0.8110 @ 20)  14s
+06:39:00   [w75_sep] epoch 24/60  loss 1.4328  val AUC 0.8080  (best 0.8110 @ 20)  14s
+06:39:14   [w75_sep] epoch 25/60  loss 1.4305  val AUC 0.8083  (best 0.8110 @ 20)  14s
+06:39:28   [w75_sep] epoch 26/60  loss 1.4289  val AUC 0.8076  (best 0.8110 @ 20)  14s
+06:39:41   [w75_sep] epoch 27/60  loss 1.4279  val AUC 0.8091  (best 0.8110 @ 20)  14s
+06:39:55   [w75_sep] epoch 28/60  loss 1.4273  val AUC 0.8102  (best 0.8110 @ 20)  14s
+06:40:09   [w75_sep] epoch 29/60  loss 1.4249  val AUC 0.8059  (best 0.8110 @ 20)  14s
+06:40:23   [w75_sep] epoch 30/60  loss 1.4242  val AUC 0.8068  (best 0.8110 @ 20)  14s
+06:40:36   [w75_sep] epoch 31/60  loss 1.4225  val AUC 0.8047  (best 0.8110 @ 20)  14s
+06:40:50   [w75_sep] epoch 32/60  loss 1.4211  val AUC 0.8081  (best 0.8110 @ 20)  14s
+06:41:04   [w75_sep] epoch 33/60  loss 1.4193  val AUC 0.8077  (best 0.8110 @ 20)  14s
+06:41:18   [w75_sep] epoch 34/60  loss 1.4188  val AUC 0.8088  (best 0.8110 @ 20)  14s
+06:41:31   [w75_sep] epoch 35/60  loss 1.4166  val AUC 0.8056  (best 0.8110 @ 20)  14s
+06:41:45   [w75_sep] epoch 36/60  loss 1.4153  val AUC 0.8069  (best 0.8110 @ 20)  14s
+06:41:59   [w75_sep] epoch 37/60  loss 1.4140  val AUC 0.8110  (best 0.8110 @ 37)  14s
+06:42:13   [w75_sep] epoch 38/60  loss 1.4125  val AUC 0.8075  (best 0.8110 @ 37)  14s
+06:42:26   [w75_sep] epoch 39/60  loss 1.4116  val AUC 0.8108  (best 0.8110 @ 37)  14s
+06:42:40   [w75_sep] epoch 40/60  loss 1.4104  val AUC 0.8060  (best 0.8110 @ 37)  14s
+06:42:54   [w75_sep] epoch 41/60  loss 1.4089  val AUC 0.8088  (best 0.8110 @ 37)  14s
+06:43:08   [w75_sep] epoch 42/60  loss 1.4075  val AUC 0.8110  (best 0.8110 @ 42)  14s
+06:43:21   [w75_sep] epoch 43/60  loss 1.4073  val AUC 0.8076  (best 0.8110 @ 42)  14s
+06:43:35   [w75_sep] epoch 44/60  loss 1.4058  val AUC 0.8102  (best 0.8110 @ 42)  14s
+06:43:49   [w75_sep] epoch 45/60  loss 1.4046  val AUC 0.8071  (best 0.8110 @ 42)  14s
+06:44:03   [w75_sep] epoch 46/60  loss 1.4030  val AUC 0.8086  (best 0.8110 @ 42)  14s
+06:44:16   [w75_sep] epoch 47/60  loss 1.4022  val AUC 0.8078  (best 0.8110 @ 42)  14s
+06:44:30   [w75_sep] epoch 48/60  loss 1.4016  val AUC 0.8082  (best 0.8110 @ 42)  14s
+06:44:44   [w75_sep] epoch 49/60  loss 1.4002  val AUC 0.8083  (best 0.8110 @ 42)  14s
+06:44:58   [w75_sep] epoch 50/60  loss 1.3993  val AUC 0.8074  (best 0.8110 @ 42)  14s
+06:45:11   [w75_sep] epoch 51/60  loss 1.3993  val AUC 0.8079  (best 0.8110 @ 42)  14s
+06:45:25   [w75_sep] epoch 52/60  loss 1.3984  val AUC 0.8090  (best 0.8110 @ 42)  14s
+06:45:39   [w75_sep] epoch 53/60  loss 1.3982  val AUC 0.8087  (best 0.8110 @ 42)  14s
+06:45:53   [w75_sep] epoch 54/60  loss 1.3973  val AUC 0.8080  (best 0.8110 @ 42)  14s
+06:46:06   [w75_sep] epoch 55/60  loss 1.3969  val AUC 0.8081  (best 0.8110 @ 42)  14s
+06:46:20   [w75_sep] epoch 56/60  loss 1.3967  val AUC 0.8082  (best 0.8110 @ 42)  14s
+06:46:34   [w75_sep] epoch 57/60  loss 1.3967  val AUC 0.8090  (best 0.8110 @ 42)  14s
+06:46:48   [w75_sep] epoch 58/60  loss 1.3959  val AUC 0.8088  (best 0.8110 @ 42)  14s
+06:47:01   [w75_sep] epoch 59/60  loss 1.3962  val AUC 0.8085  (best 0.8110 @ 42)  14s
+06:47:15   [w75_sep] epoch 60/60  loss 1.3959  val AUC 0.8082  (best 0.8110 @ 42)  14s
+06:47:24 [w75_sep] TEST AUC 0.8191 [0.799, 0.838]  dAUC vs current -0.0192 [-0.028, -0.011]  acc 73.8%  (18.2 M MACs)
+06:47:24 report updated: /Users/oscarzhang/Desktop/leopatch_model-main/export_out/small/RESULTS_small.md
+06:47:24 DONE in 77 min. Read /Users/oscarzhang/Desktop/leopatch_model-main/export_out/small/RESULTS_small.md

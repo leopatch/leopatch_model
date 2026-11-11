@@ -1,0 +1,22 @@
+{
+  "checkpoint": "/tmp/claude-0/-home-claude/055478ed-70ec-5830-9063-3d7d11795ef0/scratchpad/repo/leopatch_model-main/models/2026.10.08/2_best_ecg_sex_leadv3_finetuned_15epochs.pth",
+  "data": "REAL windows from /tmp/claude-0/-home-claude/055478ed-70ec-5830-9063-3d7d11795ef0/scratchpad/calib300.npy (300)",
+  "tflite_kib": 1464.6,
+  "keras_vs_torch_max_abs": 1.430511474609375e-06,
+  "int8_mean_abs_err": 0.22547776997089386,
+  "int8_max_abs_err": 0.7539768218994141,
+  "int8_corr": 0.9930486645257571,
+  "decision_agreement": 0.9375,
+  "threshold": 0.5634123682975769,
+  "ops": {
+    "PAD": 4,
+    "RESHAPE": 8,
+    "CONV_2D": 7,
+    "MAX_POOL_2D": 1,
+    "ADD": 2,
+    "MEAN": 1,
+    "FULLY_CONNECTED": 2
+  },
+  "tf_version": "2.21.0",
+  "torch_version": "2.14.1+cu130"
+}
