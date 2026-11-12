@@ -1,0 +1,47 @@
+Refs,Manufacturer,MPN,LCSC,Description,Note
+"C1,C105",Samsung Electro-Mechanics,CL10A475KO8NNNC,C19666,"4.7uF 16V X5R 10% 0603 MLCC",JLC basic
+"C2,C3,C4,C104,C208,C210,C605,C607",YAGEO,CC0603KRX7R9BB104,C14663,"100nF 50V X7R 10% 0603 MLCC",JLC basic
+"C101,C102,C103",Samsung Electro-Mechanics,CL21A106KAYNNNE,C15850,"10uF 25V X5R 10% 0805 MLCC",JLC basic (C101 was 16V and C102/C103 10V in the schematic; 25V covers all three)
+"C203,C213,C214,C601,C602",Samsung Electro-Mechanics,CL10C102JB8NNNC,C163508,"1nF 50V C0G/NP0 5% 0603 MLCC","C0G: PLL, MAX30003 common-mode input filter (C213/C214, keep matched), AD8232 filter"
+C201,Murata,GRM1885C1H103JA01D,C85973,"10nF 50V C0G/NP0 5% 0603 MLCC",MAX30003 differential input filter (ECGP-ECGN)
+C202,Samsung Electro-Mechanics,CL10B106MQ8NRNC,C3039698,"10uF 6.3V X7R 20% 0603 MLCC","MAX30003 CHPF (sets the 0.04 Hz analog high-pass); sees < 1 V"
+"C204,C205,C207,C209",Samsung Electro-Mechanics,CL10A106KP8NNNC,C19702,"10uF 10V X5R 10% 0603 MLCC",JLC basic
+"C206,C211,C212",Samsung Electro-Mechanics,CL10A105KB8NNNC,C15849,"1uF 50V X5R 10% 0603 MLCC",JLC basic
+C603,FH (Guangdong Fenghua),0603CG122J500NT,C68659,"1.2nF 50V C0G/NP0 5% 0603 MLCC",AD8232 low-pass (C0G)
+"C604,C606",YAGEO,CC0805KKX7R9BB334,C107132,"330nF 50V X7R 10% 0805 MLCC",AD8232 high-pass
+"D101,D102",STMicroelectronics,BAT54JFILM,C86299,"Schottky diode 40V 300mA SOD-323",fits the SOD-323 footprint
+D301,Hubei KENTO,KT-0603G,C12624,"LED green 525nm 0603",PASS (InGaN green; R301 lowered to 100R so it is bright from a 3.3 V pin)
+D302,Hubei KENTO,KT-0603Y,C2287,"LED yellow 590nm 0603",CHECK
+D303,Hubei KENTO,KT-0603R,C2286,"LED red 625nm 0603",FAIL - JLC basic
+J101,JST,B2B-PH-K-S(LF)(SN),C131337,"JST PH 2-pin header vertical 2.0mm, through-hole",battery lead connector (mates PHR-2); through-hole
+J102,Global Connector Technology,USB4105-GF-A,C3020560,"USB Type-C receptacle USB 2.0 16P SMD right-angle",
+"J103,J104,J105",XFCN,PZ254V-11-01P,C492400,"Pin header 1x1 2.54mm vertical, through-hole",alligator-clip pins; through-hole
+"J201,J601",CUI Devices,SJ-3523-SMT-TR,,"3.5mm stereo (TRS) audio jack SMD right-angle",LCSC stock 0 - use JLC Global Sourcing or consign (DigiKey/Mouser stock it)
+"J202,J602",XFCN,PZ254V-11-03P,C2937625,"Pin header 1x3 2.54mm vertical, through-hole",electrode backup header; through-hole
+J301,hanxia,HX PZ1.27-2x5P TP,C41376037,"Pin header 2x5 1.27mm SMD vertical (ARM SWD 10-pin)",SWD programming header
+JP101,XFCN,PZ254V-11-02P,C492401,"Pin header 1x2 2.54mm vertical, through-hole",current-measure jumper; needs a 2.54 mm jumper cap (not assembled)
+"R1,R615",UNI-ROYAL,0603WAF1002T5E,C25804,"10k 1% 100mW 0603 thick film",JLC basic
+"R2,R205",UNI-ROYAL,0603WAF1003T5E,C25803,"100k 1% 100mW 0603 thick film",JLC basic
+"R101,R617,R619",UNI-ROYAL,0603WAF0000T5E,C21189,"0R jumper 0603",JLC basic
+"R102,R606,R607,R608,R609",UNI-ROYAL,0603WAF1004T5E,C22935,"1M 1% 100mW 0603 thick film",JLC basic
+R103,UNI-ROYAL,0603WAF3303T5E,C23137,"330k 1% 100mW 0603 thick film",JLC basic
+"R104,R105",UNI-ROYAL,0603WAF5101T5E,C23186,"5.1k 1% 100mW 0603 thick film",USB-C CC pull-downs - JLC basic
+"R302,R303",UNI-ROYAL,0603WAF1001T5E,C21190,"1k 1% 100mW 0603 thick film",JLC basic
+"R201,R202",Vishay,CRCW12061K00FKEAHP,C844867,"1k 1% 750mW 1206 pulse-proof thick film","MAX30003 electrode series resistors, energy rated (datasheet: 1k rated for 8 kV surge)"
+R301,UNI-ROYAL,0603WAF1000T5E,C22775,"100R 1% 100mW 0603 thick film",green LED resistor (was 1k) - JLC basic
+"R601,R602,R610,R611,R613,R614",UNI-ROYAL,0603WAF1005T5E,C7250,"10M 1% 100mW 0603 thick film",JLC basic
+"R603,R604",UNI-ROYAL,0603WAF1803T5E,C22827,"180k 1% 100mW 0603 thick film",
+R605,UNI-ROYAL,0603WAF3603T5E,C23146,"360k 1% 100mW 0603 thick film",
+R612,UNI-ROYAL,0603WAF1404T5E,C38070,"1.4M 1% 100mW 0603 thick film",
+"R618,R620",,,,"not fitted (SparkFun AD8232 option resistors)",DNP
+SW101,C&K,PCM12SMTR,C221841,"Slide switch SPDT SMD right-angle",power on/off
+"SW301,SW302",C&K,PTS645SM43SMTR92 LFS,C221880,"Tactile switch 6x6mm SMD 4.3mm 160gf",EXPORT / START
+SW303,Omron,B3U-1000P,C231329,"Tactile switch 3x2.5mm SMD",RESET
+U1,Fanstel,BM20BC,,"BLE 6.0 module nRF54LM20B (Axon NPU), chip antenna, LGA-90 10x16.2mm",not sold by LCSC - buy from Fanstel and consign to JLC (LGA: machine placement recommended)
+U2,GigaDevice,GD25WQ64ESIGR,C3202809,"64Mbit (8MB) SPI/QSPI NOR flash 1.65-3.6V SOP-8 208mil",footprint changed to SOIC-8 5.3x5.3 (208 mil) in v4 - the S in ESIGR is the 208-mil package
+U101,Microchip,MCP1703AT-3302E/CB,C144183,"LDO 3.3V 250mA 16V-in 2uA Iq SOT-23A",
+U102,STMicroelectronics,USBLC6-2SC6,C7519,"USB 2-line ESD protection SOT-23-6",
+U201,Analog Devices (Maxim),MAX30003CTI+T,,"ECG analog front end, 18-bit, SPI, TQFN-28 5x5",LCSC stock 0 - use JLC Global Sourcing or consign (DigiKey/Mouser/ADI stock it)
+U202,Microchip,MCP1700T-1802E/TT,C150796,"LDO 1.8V 250mA 6V-in 1.6uA Iq SOT-23",replaces MCP1703AT-1802E/CB (only 3 at LCSC); same SOT-23 pinout GND/VOUT/VIN
+U601,Analog Devices,AD8232ACPZ-R7,C43216,"Single-lead heart-rate monitor AFE, LFCSP-20 4x4",
+X201,Seiko Epson,SG-3030CM 32.7680KB0:ROHS,,"32.768kHz CMOS oscillator 1.5-5.5V 3.2x1.5mm",LCSC stock 0 - use JLC Global Sourcing or consign (DigiKey stocks SG-3030CM 32.7680KB3)

@@ -1,0 +1,187 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-12T08:17:05-0600",
+    "kicad_version": "9.0.7",
+    "schematic_parity": [],
+    "source": "LeoPatch_v4.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 100.0,
+                        "y": 170.0
+                    },
+                    "uuid": "3f4cecde-46c5-496a-a2e1-07068776ece2"
+                },
+                {
+                    "description": "Segment of SW101 on F.Silkscreen",
+                    "pos": {
+                        "x": 99.18,
+                        "y": 112.9
+                    },
+                    "uuid": "c84506c9-df33-4a3a-83a2-2f5cbc43d96d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 100.0,
+                        "y": 170.0
+                    },
+                    "uuid": "3f4cecde-46c5-496a-a2e1-07068776ece2"
+                },
+                {
+                    "description": "Segment of SW101 on F.Silkscreen",
+                    "pos": {
+                        "x": 100.47,
+                        "y": 111.6
+                    },
+                    "uuid": "2d2401f5-ea6b-4278-8fb8-a1e1d34f90c1"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 100.0,
+                        "y": 170.0
+                    },
+                    "uuid": "3f4cecde-46c5-496a-a2e1-07068776ece2"
+                },
+                {
+                    "description": "Segment of J201 on F.Silkscreen",
+                    "pos": {
+                        "x": 98.9,
+                        "y": 130.4
+                    },
+                    "uuid": "23004e69-7d23-4b85-95c1-5ae813c71f94"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 100.0,
+                        "y": 170.0
+                    },
+                    "uuid": "3f4cecde-46c5-496a-a2e1-07068776ece2"
+                },
+                {
+                    "description": "Segment of J201 on F.Silkscreen",
+                    "pos": {
+                        "x": 107.8,
+                        "y": 136.6
+                    },
+                    "uuid": "b129c678-99ff-4e67-88ca-166075c0c6c7"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 140.05,
+                        "y": 106.6
+                    },
+                    "uuid": "c462576a-62aa-42cc-89f0-822c5b5b44c0"
+                },
+                {
+                    "description": "Rectangle of U1 on F.Silkscreen",
+                    "pos": {
+                        "x": 144.93,
+                        "y": 100.28
+                    },
+                    "uuid": "52f2526c-59ea-4174-b259-84f71f26c00b"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 169.0,
+                        "y": 171.0
+                    },
+                    "uuid": "019cc9a4-5078-4bba-aac9-afa0f83c5d88"
+                },
+                {
+                    "description": "Segment of J601 on F.Silkscreen",
+                    "pos": {
+                        "x": 103.9,
+                        "y": 172.1
+                    },
+                    "uuid": "e3e0d8fc-f50e-4c70-932c-9139e86dfe3f"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 169.0,
+                        "y": 171.0
+                    },
+                    "uuid": "019cc9a4-5078-4bba-aac9-afa0f83c5d88"
+                },
+                {
+                    "description": "Segment of J601 on F.Silkscreen",
+                    "pos": {
+                        "x": 110.1,
+                        "y": 163.2
+                    },
+                    "uuid": "6e7f8a46-b0eb-4274-a2f4-22dc56858787"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Footprint 'USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal' does not match copy in library 'Connector_USB'.",
+            "items": [
+                {
+                    "description": "Footprint J102",
+                    "pos": {
+                        "x": 166.4,
+                        "y": 112.0
+                    },
+                    "uuid": "041ce67e-503b-45e9-84bc-a5e8a3a3bbf4"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        }
+    ]
+}

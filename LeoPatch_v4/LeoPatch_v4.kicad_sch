@@ -1,0 +1,305 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90")
+	(paper "A4")
+	(title_block
+		(title "LeoPatch v4 - newborn CCHD ECG screening (BM20BC, MAX30003 + AD8232)")
+		(date "2026-11-12")
+		(rev "4.0")
+		(company "Rice ELEC 494 - LeoPatch")
+	)
+	(lib_symbols)
+	(sheet
+		(at 30.48 50.8)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "ab00b617-dce4-5dd5-bd30-81c8a7690bc0")
+		(property "Sheetname" "BM20BC module"
+			(at 30.48 50.0884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "LeoPatch_MCU.kicad_sch"
+			(at 30.48 76.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "LeoPatch_v4"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 101.6 50.8)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "1bd637cf-7783-5fe2-bdf0-ffd80b334887")
+		(property "Sheetname" "Power"
+			(at 101.6 50.0884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "LeoPatch_Power.kicad_sch"
+			(at 101.6 76.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "LeoPatch_v4"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 30.48 101.6)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "f0d23f52-e0d2-5d2d-be47-e1184c1697c7")
+		(property "Sheetname" "ECG front end"
+			(at 30.48 100.8884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "LeoPatch_ECG.kicad_sch"
+			(at 30.48 127.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "LeoPatch_v4"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90"
+					(page "4")
+				)
+			)
+		)
+	)
+(sheet
+		(at 172.72 101.6)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "1d6c4f87-bd9a-573e-bd57-1bf4989b18b5")
+		(property "Sheetname" "ECG AD8232"
+			(at 172.72 100.8884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "LeoPatch_ECG_AD8232.kicad_sch"
+			(at 172.72 127.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "LeoPatch_v4"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 101.6 101.6)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "707f3a77-758b-5a35-aad2-4bc90a18387e")
+		(property "Sheetname" "LEDs + button"
+			(at 101.6 100.8884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "LeoPatch_UI.kicad_sch"
+			(at 101.6 127.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "LeoPatch_v4"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 172.72 50.8)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "7cc85e11-f58d-5d51-883e-cdd1ec6b8e98")
+		(property "Sheetname" "USB-C"
+			(at 172.72 50.0884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "LeoPatch_USB.kicad_sch"
+			(at 172.72 76.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "LeoPatch_v4"
+				(path "/7a41c3d9-2e65-4f0b-9c88-3d5e1f6a2b90"
+					(page "6")
+				)
+			)
+		)
+	)
+	(text "4xAA -> on/off -> reverse-polarity diode -> MCP1703A 3.3 V LDO -> BM20BC + AD8232 (USB-C 5 V also feeds the LDO)"
+		(exclude_from_sim no)
+		(at 30.48 150 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "94a70d06-6814-49d2-ad1d-f9036d2ecefe")
+	)
+	(text "ECG electrodes -> 3.5 mm jack -> AD8232 -> ECG_OUT -> nRF54LM20B AIN4 (P1.06)"
+		(exclude_from_sim no)
+		(at 30.48 156 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4e22a576-bade-4bc2-9685-2728427027dc")
+	)
+	(text "Result LEDs, EXPORT button, SWD header (first flash), USB-C (updates + data).  4-layer, standard vias."
+		(exclude_from_sim no)
+		(at 30.48 162 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c8a8643e-6821-4475-a4e5-54bc164dc72a")
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
