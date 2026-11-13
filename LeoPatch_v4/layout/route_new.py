@@ -19,7 +19,7 @@ OUT = sys.argv[2]
 ONLY = set(sys.argv[3].split(",")) if len(sys.argv) > 3 and sys.argv[3] else None
 
 RES, CL, FUDGE, EDGE_CL, HOLE_CL = 0.1, 0.15, 0.015, 0.3, 0.2
-VIA_D, VIA_DRILL = 0.45, 0.2
+VIA_D, VIA_DRILL = 0.45, 0.3   # JLCPCB standard 4-layer via (0.3 mm hole / 0.45 mm pad)
 VIA_COST, TURN_COST, MODULE_COST = 12.0, 0.4, 4.0
 SEP, COUPLE_COST = 0.5, 4.0   # analog <-> switching-digital tracks on the same layer: keep >= 0.5 mm edge to edge (soft rule)
 

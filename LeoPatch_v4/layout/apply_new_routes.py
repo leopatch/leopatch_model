@@ -31,7 +31,7 @@ for lyr, x0, y0, x1, y1, w, n in r["tracks"]:
     t = pcbnew.PCB_TRACK(b); t.SetStart(P(x0, y0)); t.SetEnd(P(x1, y1)); t.SetWidth(MM(w)); t.SetLayer(LAY[lyr])
     t.SetNet(b.FindNet(n)); b.Add(t)
 for x, y, n in r["vias"]:
-    v = pcbnew.PCB_VIA(b); v.SetPosition(P(x, y)); v.SetWidth(MM(0.45)); v.SetDrill(MM(0.2))
+    v = pcbnew.PCB_VIA(b); v.SetPosition(P(x, y)); v.SetWidth(MM(0.45)); v.SetDrill(MM(0.3))
     v.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu); v.SetNet(b.FindNet(n)); b.Add(v)
 # remove track stubs with a free end (left over where old routing was cut), repeat until none are left;
 # KiCad's own connectivity decides what is dangling

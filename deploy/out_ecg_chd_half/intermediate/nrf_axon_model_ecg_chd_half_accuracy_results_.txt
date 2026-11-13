@@ -1,0 +1,21 @@
+
+-----------------------------------------------------
+ Model ECG_CHD_HALF results (variant : ecg_chd_half)
+-----------------------------------------------------
+
+	Memory Usage (in bytes)
+
+		model_const_buffer_size:	372772
+		interlayer_buffer_size:	26368
+		psum_buffer_size:	0
+		cmd_buffer_size:	145688
+
+	Inference time (estimate, in ticks):	13331796
+
+	Accuracy/Results NA, Labels are not provided!
+	
+ 	Bit Comparison Histogram  (8 data points) 
+
+		Diff	||graph|| (count, percent of full data points)
+		   0	||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| (8, 100.00%)
+	No differences found. All values match perfectly.

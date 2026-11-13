@@ -131,7 +131,7 @@
         "min_text_thickness": 0.08,
         "min_through_hole_diameter": 0.2,
         "min_track_width": 0.127,
-        "min_via_annular_width": 0.1,
+        "min_via_annular_width": 0.075,
         "min_via_diameter": 0.45,
         "solder_mask_to_copper_clearance": 0.0,
         "use_height_for_length_calcs": true
@@ -471,7 +471,7 @@
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.2,
         "via_diameter": 0.45,
-        "via_drill": 0.2,
+        "via_drill": 0.3,
         "wire_width": 6
       },
       {
@@ -878,6 +878,10 @@
     [
       "7cc85e11-f58d-5d51-883e-cdd1ec6b8e98",
       "USB-C"
+    ],
+    [
+      "1d6c4f87-bd9a-573e-bd57-1bf4989b18b5",
+      "ECG AD8232"
     ]
   ],
   "text_variables": {

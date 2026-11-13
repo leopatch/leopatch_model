@@ -1,6 +1,8 @@
 # JLC rotation corrections (KiCad footprint name regex -> degrees added to the KiCad rotation, optional X/Y offset in mm).
 # From matthewlai/JLCKicadTools cpl_rotations_db.csv (MIT), as used by many KiCad -> JLC exports.
 "Footprint pattern","Rotation","Offset X", "Offset Y"
+"^LED_0603",180
+"^PinHeader_1x0[2-9]_P2\.54mm_Vertical",90
 "^R_Array_Convex_",90
 "^R_Array_Concave_",90
 "^SOT-223",180

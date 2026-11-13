@@ -100,7 +100,10 @@ def move(ref, x, y, rot=None):
     return f
 
 
-j = move("J201", 107.5, 133.5, 270)                      # MAX30003 jack, plug enters from the left edge
+# MAX30003 jack, plug enters from the left edge. In the stock footprint the barrel is at local -y (y -8.5..-6),
+# so 90 deg puts it at -x; x = edge + 8.5 puts the barrel tip flush with the edge (v4 before 2026-11-13 had 270:
+# barrel facing into the board, body hanging off the edge)
+j = move("J201", 108.5, 133.5, 90)
 r = j.GetBoundingBox(False, False)
 print("J201 bbox x %.1f-%.1f y %.1f-%.1f" % (T(r.GetLeft()), T(r.GetRight()), T(r.GetTop()), T(r.GetBottom())))
 move("C211", 140.2, 129.4)                               # off the U202 courtyard
@@ -113,16 +116,19 @@ h5.SetReference("H5"); b.Add(h5); h5.SetPosition(P(104.0, 147.5))
 # silkscreen
 for d in list(b.GetDrawings()):
     if d.GetClass() == "PCB_TEXT" and d.GetText() == "LeoPatch v2":
-        d.SetText("LeoPatch v4"); d.SetPosition(P(155.0, 160.0))
+        d.SetText("LeoPatch v4"); d.SetPosition(P(157.0, 162.0))
     elif d.GetClass() == "PCB_TEXT" and d.GetText() == "MAX30003":
         d.SetPosition(P(108.0, 141.0))
 u = b.FindFootprintByReference("U201").Reference(); u.SetPosition(P(122.6, 126.9)); u.SetTextAngle(pcbnew.EDA_ANGLE(0, pcbnew.DEGREES_T))
 # C204's GND pad is boxed in by tracks (one thermal spoke); it has its own plane via, so pour it solid
 b.FindFootprintByReference("C204").FindPadByNumber("2").SetLocalZoneConnection(pcbnew.ZONE_CONNECTION_FULL)
+b.FindFootprintByReference("C203").FindPadByNumber("2").SetLocalZoneConnection(pcbnew.ZONE_CONNECTION_FULL)
+b.FindFootprintByReference("X201").FindPadByNumber("2").SetLocalZoneConnection(pcbnew.ZONE_CONNECTION_FULL)   # OV-7604 GND pad, boxed in by FCLK / +3V3   # same, when the router can't reach a via
 
 
-def silk(txt, x, y, size=1.0):
+def silk(txt, x, y, size=1.0, rot=0):
     t = pcbnew.PCB_TEXT(b); t.SetText(txt); t.SetLayer(pcbnew.F_SilkS); t.SetPosition(P(x, y))
+    t.SetTextAngle(pcbnew.EDA_ANGLE(rot, pcbnew.DEGREES_T))
     t.SetTextSize(pcbnew.VECTOR2I(MM(size), MM(size))); t.SetTextThickness(MM(0.15)); b.Add(t)
 
 
@@ -166,10 +172,10 @@ MAX_SHEET = "/f0d23f52-e0d2-5d2d-be47-e1184c1697c7/"
 NS5 = uuid.UUID("5b0e1c1e-0000-4000-8000-00000000c005")
 
 
-def new_fp(lib, name, ref, value, x, y, rot, path, like=None):
+def new_fp(lib, name, ref, value, x, y, rot, path, like=None, sheet=("ECG front end", "LeoPatch_ECG.kicad_sch")):
     f = pcbnew.FootprintLoad(FPLIB + lib + ".pretty", name)
-    f.SetFPID(pcbnew.LIB_ID(lib, name)); f.SetReference(ref); f.SetValue(value)
-    f.SetPath(pcbnew.KIID_PATH(path)); f.SetSheetname("ECG front end"); f.SetSheetfile("LeoPatch_ECG.kicad_sch")
+    f.SetFPID(pcbnew.LIB_ID(lib, name)); f.SetReference(ref); f.SetValue(VALUE.get(ref, value))
+    f.SetPath(pcbnew.KIID_PATH(path)); f.SetSheetname(sheet[0]); f.SetSheetfile(sheet[1])
     if like is not None:
         f.SetAttributes(like.GetAttributes())
         lr, fr = like.Reference(), f.Reference()
@@ -192,17 +198,58 @@ for ref, x in (("C213", 128.0), ("C214", 130.5)):
     new_fp("Capacitor_SMD", "C_0603_1608Metric", ref, "1nF C0G", x, 136.9, 90, MAX_SHEET + str(uuid.uuid5(NS5, ref)), like=like)
 print("MAX30003 input filter placed")
 
+# ---------------------------------------------------------------- 4d. eval-kit RL bias, AD8232 output RC, status LEDs (fix_v4_batch_sch.py)
+NS6 = uuid.UUID("5b0e1c1e-0000-4000-8000-00000000c006")
+S_MAX = ("ECG front end", "LeoPatch_ECG.kicad_sch", "/f0d23f52-e0d2-5d2d-be47-e1184c1697c7/")
+S_AD = ("ECG AD8232", "LeoPatch_ECG_AD8232.kicad_sch", f"/{SHEET_B}/")
+S_PWR = ("Power", "LeoPatch_Power.kicad_sch", "/1bd637cf-7783-5fe2-bdf0-ffd80b334887/")
+R06, C06, L06 = ("Resistor_SMD", "R_0603_1608Metric"), ("Capacitor_SMD", "C_0603_1608Metric"), ("LED_SMD", "LED_0603_1608Metric")
+like = b.FindFootprintByReference("C203")
+for ref, (lib, fpn), x, y, rot, sh in (
+        ("R208", R06, 120.5, 136.5, 90, S_MAX),                                  # VCM -> RL electrode, 499k
+        ("R623", R06, 146.8, 150.3, 0, S_AD), ("C608", C06, 146.8, 152.3, 0, S_AD),   # AD8232 OUT -> 1k -> ECG_OUT, 10nF (right of TP601)
+        # "leads on" status panel, bottom right: rows MAX30003 (pad A7) / AD8232 (pad F8)
+        ("D201", L06, 155.0, 149.0, 0, S_MAX), ("R206", R06, 155.0, 150.8, 0, S_MAX),
+        ("D601", L06, 155.0, 154.0, 0, S_AD), ("R621", R06, 155.0, 155.8, 0, S_AD),
+        ("D103", L06, 118.0, 121.0, 0, S_PWR), ("R106", R06, 118.0, 122.8, 0, S_PWR)):  # power LED
+    new_fp(lib, fpn, ref, VALUE.get(ref, ""), x, y, rot, sh[2] + str(uuid.uuid5(NS6, ref)), like=like, sheet=sh[:2])
+silk("LEADS ON", 155.0, 147.3, 0.8); silk("MAX30003", 150.1, 149.0, 0.8); silk("AD8232", 150.6, 154.0, 0.8)
+silk("PWR", 121.4, 121.0, 0.8)
+print("RL bias, AD8232 output RC and status LEDs placed")
+
+# ---------------------------------------------------------------- 4e. test points (fix_v4_testpoints_sch.py): bare 1.5 mm pads
+NS7 = uuid.UUID("5b0e1c1e-0000-4000-8000-00000000c007")
+like = b.FindFootprintByReference("TP1")
+TPLIB = ("TestPoint", "TestPoint_Pad_D1.5mm")
+for ref, x, y, sh, txt, tx, ty, rot in (
+        # SPI bus to the MAX30003, one row under the module escape lines; labels vertical above the pads
+        # (courtyards are 2.5 mm circles -> 2.6 mm pitch)
+        ("TP202", 137.3, 122.8, S_MAX, "CS", 137.3, 120.9, 90), ("TP203", 139.9, 122.8, S_MAX, "SCK", 139.9, 120.7, 90),
+        ("TP204", 142.5, 122.8, S_MAX, "MOSI", 142.5, 120.4, 90), ("TP205", 145.1, 122.8, S_MAX, "MISO", 145.1, 120.4, 90),
+        ("TP206", 147.7, 122.8, S_MAX, "INT", 147.7, 120.7, 90),
+        ("TP201", 138.4, 125.6, S_MAX, "FCLK", 141.2, 125.6, 0),                 # 32 kHz clock from X201
+        ("TP207", 138.6, 132.6, S_MAX, "1V8", 141.0, 132.6, 0),                  # U202 output (MAX30003 DVDD)
+        ("TP602", 149.6, 143.5, S_AD, "ADC", 149.6, 145.2, 0),                   # ECG_OUT after R623/C608
+        ("TP604", 152.6, 143.5, S_AD, "GND", 152.6, 145.2, 0),                   # scope ground next to it
+        ("TP603", 137.6, 150.3, S_AD, "REF", 137.6, 152.0, 0),                   # AD8232 REFOUT ~1.65 V
+        ("TP101", 120.0, 112.4, S_PWR, "VSNS", 120.0, 110.7, 0)):                # battery divider
+    new_fp(*TPLIB, ref, "", x, y, 0, sh[2] + str(uuid.uuid5(NS7, ref)), like=like, sheet=sh[:2])
+    silk(txt, tx, ty, 0.8, rot)
+print("test points placed")
+
 # ---------------------------------------------------------------- 5. the AD8232 block from v2
 v2 = pcbnew.LoadBoard("../LeoPatch_v2/LeoPatch_v2.kicad_pcb")
 newref = lambda r: {"TP3": "TP601"}.get(r) or re.sub(r"^([A-Z]+)2(\d\d)$", r"\g<1>6\2", r)
-newnet = lambda n: n.replace("/ECG front end/", "/ECG AD8232/")
+V2_RENAME = {"ECG_OUT": "/ECG AD8232/AOUT",   # U601 OUT -> R623 -> ECG_OUT
+             "ECG_SDN": "/ECG AD8232/SDN"}    # SDN only pulled up now (pad A7 drives the MAX30003 LEADS LED)
+newnet = lambda n: V2_RENAME.get(n) or n.replace("/ECG front end/", "/ECG AD8232/")
 CLUSTER = [f for f in v2.GetFootprints() if (re.fullmatch(r"[RCUJ]2\d\d", f.GetReference()) or f.GetReference() == "TP3")]
 for f in CLUSTER:
     ref = newref(f.GetReference())
     fid = f.GetFPID()
     g = pcbnew.FootprintLoad(FPLIB + fid.GetLibNickname().wx_str() + ".pretty", fid.GetLibItemName().wx_str())
     g.SetFPID(fid)
-    g.SetReference(ref); g.SetValue(f.GetValue())
+    g.SetReference(ref); g.SetValue(VALUE.get(ref, f.GetValue()))
     g.SetPath(pcbnew.KIID_PATH(f"/{SHEET_B}/{uuid.uuid5(NS, ref)}"))
     g.SetSheetname("ECG AD8232"); g.SetSheetfile("LeoPatch_ECG_AD8232.kicad_sch")
     g.SetAttributes(f.GetAttributes())
@@ -213,6 +260,9 @@ for f in CLUSTER:
         x, y = 146.5, 147.0                               # SDN pull-up
     elif ref == "TP601":
         x, y = 143.5, 150.0
+    elif ref == "J601":                                   # AD8232 jack: barrel (local -y) to the bottom edge, tip flush
+        x, y = 107.0, 162.5
+        g.SetOrientationDegrees(180)
     else:
         y += DY
     g.SetPosition(P(x, y))

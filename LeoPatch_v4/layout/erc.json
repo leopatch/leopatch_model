@@ -1,7 +1,7 @@
 {
     "$schema": "https://schemas.kicad.org/erc.v1.json",
     "coordinate_units": "mm",
-    "date": "2026-11-12T08:16:25-0600",
+    "date": "2026-11-12T20:42:48-0600",
     "kicad_version": "9.0.7",
     "sheets": [
         {
@@ -33,6 +33,21 @@
                                 "y": 0.889
                             },
                             "uuid": "f122076a-75d1-5729-8acc-b7978a6e27ad"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'LeoPatch'",
+                    "items": [
+                        {
+                            "description": "Symbol X201 [OV-7604-C7]",
+                            "pos": {
+                                "x": 1.778,
+                                "y": 1.016
+                            },
+                            "uuid": "e1770646-bb98-5e74-b18a-794c7bd3ddea"
                         }
                     ],
                     "severity": "warning",

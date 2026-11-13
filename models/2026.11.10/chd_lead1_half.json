@@ -1,0 +1,44 @@
+{
+  "task": "chd",
+  "lead": "I",
+  "width": 0.5,
+  "weights": 364865,
+  "data": "pediatric_beats.npz",
+  "best_epoch": 23,
+  "val_auc": 0.8096457845433255,
+  "test_auc": 0.7598973757442793,
+  "val_threshold": 0.7168594598770142,
+  "n_train": 9874,
+  "n_val": 2140,
+  "n_test": 2155,
+  "test_by_age": {
+    "0-28 days": {
+      "n": 37,
+      "chd": 20,
+      "auc": 0.611764705882353,
+      "sensitivity": 0.6,
+      "specificity": 0.5882352941176471
+    },
+    "1-12 months": {
+      "n": 107,
+      "chd": 53,
+      "auc": 0.7299091544374564,
+      "sensitivity": 0.6792452830188679,
+      "specificity": 0.6481481481481481
+    },
+    "1-6 years": {
+      "n": 589,
+      "chd": 207,
+      "auc": 0.7623491918961984,
+      "sensitivity": 0.6811594202898551,
+      "specificity": 0.7513089005235603
+    },
+    "6+ years": {
+      "n": 1422,
+      "chd": 221,
+      "auc": 0.723062606199208,
+      "sensitivity": 0.4841628959276018,
+      "specificity": 0.835970024979184
+    }
+  }
+}

@@ -12,7 +12,11 @@ $PY layout/dump_geom.py LeoPatch_v4.kicad_pcb $T/geom.json
 $VPY layout/route_new.py $T/geom.json $T/routes1.json "" layout/route_order.json
 # pass 2: same order, analog nets keep 0.5 mm away from where pass 1 put the switching lines (and vice versa)
 $VPY layout/route_new.py $T/geom.json $T/routes.json "" layout/route_order.json $T/routes1.json
+# keep pass 1 if the spacing pass made routing fail where pass 1 did not
+$VPY -c "import json,shutil,sys; a=json.load(open(sys.argv[1]))['fails']; b=json.load(open(sys.argv[2]))['fails']; (len(b)>len(a)) and (print('pass 2 worse, using pass 1'), shutil.copy(sys.argv[1], sys.argv[2]))" $T/routes1.json $T/routes.json
 $PY layout/apply_new_routes.py LeoPatch_v4.kicad_pcb $T/routes.json
+$PY layout/set_via_drill.py LeoPatch_v4.kicad_pcb    # 0.3 mm via holes (JLC standard), merge too-close same-net vias
 $PY layout/refill.py LeoPatch_v4.kicad_pcb
+$PY layout/set_3d_models.py LeoPatch_v4.kicad_pcb     # project-local STEP models (jacks)
 $CLI pcb drc --schematic-parity --format json -o layout/drc.json LeoPatch_v4.kicad_pcb
 python3 layout/make_jlc_files.py

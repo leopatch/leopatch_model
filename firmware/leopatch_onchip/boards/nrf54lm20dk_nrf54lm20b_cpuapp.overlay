@@ -1,0 +1,33 @@
+/*
+ * AD8232 breakout on the nRF54LM20 DK:
+ *   OUTPUT -> P1.04 (AIN6, header P2)
+ *   LO+    -> P3.00 (header P5)
+ *   LO-    -> P3.01 (header P5)
+ *   SDN    -> P3.02 (header P5), driven high while recording
+ * Set nRF:VDD to 3.3 V in the Board Configurator first; the ADC input must stay below VDD.
+ */
+/ {
+	zephyr,user {
+		io-channels = <&adc 0>;
+		lo-plus-gpios = <&gpio3 0 GPIO_ACTIVE_HIGH>;
+		lo-minus-gpios = <&gpio3 1 GPIO_ACTIVE_HIGH>;
+		sdn-gpios = <&gpio3 2 GPIO_ACTIVE_LOW>;
+	};
+};
+
+&adc {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	status = "okay";
+
+	/* 0.9 V internal reference x gain 1/4 = 3.6 V full scale, covers the AD8232's 0-3.3 V output */
+	channel@0 {
+		reg = <0>;
+		zephyr,gain = "ADC_GAIN_1_4";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+		zephyr,input-positive = <NRF_SAADC_AIN6>; /* P1.04 */
+		zephyr,resolution = <12>;
+		zephyr,oversampling = <4>;
+	};
+};

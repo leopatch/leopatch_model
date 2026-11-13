@@ -1,5 +1,6 @@
 """LeoPatch v4: write the part choices of layout/parts.csv into the schematic (system python3, KiCad closed, run from LeoPatch_v4).
-Every placed symbol gets hidden Manufacturer / MPN / LCSC fields (old MPN fields are replaced). Also:
+Every placed symbol gets hidden Manufacturer / MPN / LCSC fields (old MPN fields are replaced) and its Datasheet
+field set to the datasheet link in parts.csv. Also:
   U2   footprint -> SOIC-8 5.3x5.3 mm (GD25WQ64ESIGR is the 208-mil SOP-8; v2/v3 had the 150-mil footprint)
   U202 value     -> MCP1700T-1802E/TT (MCP1703AT-1802E/CB: 3 pcs at LCSC; same SOT-23 pinout GND / VOUT / VIN)
   R301 value     -> 100 (green InGaN LED needs ~3 V; 1k from a 3.3 V pin gave ~0.2 mA)
@@ -48,6 +49,10 @@ for fn in sorted(glob.glob("*.kicad_sch")):
                 assert c == 1, (ref, key)
             if ref in PARTS:
                 p = PARTS[ref]
+                if p.get("Datasheet"):                                # datasheet link from parts.csv
+                    ds = p["Datasheet"].replace('"', '%22')
+                    new, c = re.subn(r'(\(property "Datasheet" )"[^"]*"', lambda mm: f'{mm.group(1)}"{ds}"', new, 1)
+                    assert c == 1, (ref, "Datasheet")
                 for key in ("Manufacturer", "MPN", "LCSC"):             # drop old copies
                     i = new.find(f'\t\t(property "{key}" ')
                     if i >= 0:

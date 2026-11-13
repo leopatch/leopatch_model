@@ -1,0 +1,15 @@
+{
+  "task": "sex",
+  "lead": "V3",
+  "width": 0.5,
+  "weights": 364865,
+  "data": "ptbxl_beats.npz",
+  "best_epoch": 21,
+  "val_auc": 0.8106659453177442,
+  "test_auc": 0.8066090100488864,
+  "val_threshold": 0.7815940976142883,
+  "n_train": 17280,
+  "n_val": 1999,
+  "n_test": 2172,
+  "teacher_test_auc": 0.8046026276480174
+}
